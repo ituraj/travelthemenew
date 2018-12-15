@@ -1,0 +1,45 @@
+@import "../../node_modules/normalize.css/normalize";
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Karla", sans-serif;
+}
+
+p {
+  font-family: "Lato", sans-serif;
+}
+
+.navbar {
+  font-family: "Karla", sans-serif;
+}
+
+.header-test {
+  height: 80vh;
+  background-image: url(../images/test.png);
+  background-size: cover;
+  background-position: bottom;
+  position: relative;
+}
+
+.search-container {
+  margin-top: -2.1875rem;
+}
+
+.scrolling-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+
+  .card {
+    flex: 0 0 auto;
+  }
+}

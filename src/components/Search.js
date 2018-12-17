@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "../styles/App.scss";
 import Select from "react-select";
 
+import Favorites from "./Favorites";
+
 class Search extends Component {
   constructor(props) {
     super(props);
@@ -9,21 +11,26 @@ class Search extends Component {
   }
 
   render() {
-    var statusOptions = [
-      { label: "someting", value: "active" },
-      { label: "someting", value: "expired" }
+    var seasonOptions = [
+      { label: "Spring", value: "spring" },
+      { label: "Summer", value: "summer" },
+      { label: "Fall", value: "fall" },
+      { label: "Winter", value: "winter" }
     ];
 
-    var discountOptions = [
-      { label: "someting", value: "order" },
-      { label: "someting", value: "shipping" },
-      { label: "someting", value: "categories" }
+    var activityOptions = [
+      { label: "Kayaking", value: "kayaking" },
+      { label: "Diving", value: "diving" },
+      { label: "Biking", value: "biking" }
     ];
 
-    var customerOptions = [
-      { label: "someting", value: "all" },
-      { label: "someting", value: "loggedin" },
-      { label: "someting", value: "nopurchases" }
+    var continentOptions = [
+      { label: "Africa", value: "africa" },
+      { label: "Asia", value: "asia" },
+      { label: "Australia", value: "australia" },
+      { label: "Europe", value: "europe" },
+      { label: "North America", value: "north-america" },
+      { label: "South America", value: "south-america" }
     ];
 
     return (
@@ -50,12 +57,11 @@ class Search extends Component {
                     id="promotionInputMobile"
                     type="text"
                     style={{
-                      paddingLeft: "2.4rem",
                       borderRadius: "0.25rem",
                       fontSize: "0.875rem"
                     }}
                     className="form-control search-name"
-                    placeholder="search"
+                    placeholder="Explore..."
                   />
                 </div>
                 <div
@@ -67,7 +73,7 @@ class Search extends Component {
                     type="text"
                     style={{ fontSize: "0.875rem" }}
                     className="form-control search-name"
-                    placeholder="search"
+                    placeholder="Explore..."
                   />
                 </div>
               </div>
@@ -78,8 +84,20 @@ class Search extends Component {
                   clearable={false}
                   searchable={false}
                   removeSelected={false}
-                  options={statusOptions}
-                  placeholder="search"
+                  options={seasonOptions}
+                  placeholder="Seasons"
+                  theme={theme => ({
+                    ...theme,
+                    boxShadow:
+                      "0 1px 1px rgba(0, 0, 0, 0.025) inset, 0 0 8px #ced4da",
+                    outline: "0 none",
+                    colors: {
+                      ...theme.colors,
+                      primary: "#ced4da",
+                      primary25: "#ced4da",
+                      primary50: "#9cc2da"
+                    }
+                  })}
                 />
               </div>
               <div className="col-xl-3 col-lg-4 col-md-12 col-12 pr-0 pl-0 mb-3 mb-lg-0">
@@ -89,8 +107,20 @@ class Search extends Component {
                   clearable={false}
                   searchable={false}
                   removeSelected={false}
-                  options={discountOptions}
-                  placeholder="search"
+                  options={activityOptions}
+                  placeholder="Activities"
+                  theme={theme => ({
+                    ...theme,
+                    boxShadow:
+                      "0 1px 1px rgba(0, 0, 0, 0.025) inset, 0 0 8px #ced4da",
+                    outline: "0 none",
+                    colors: {
+                      ...theme.colors,
+                      primary: "#ced4da",
+                      primary25: "#ced4da",
+                      primary50: "#9cc2da"
+                    }
+                  })}
                 />
               </div>
               <div className="col-xl-3 col-lg-4 col-md-12 col-12 pr-0 pl-0 mb-3 mb-lg-0">
@@ -100,12 +130,27 @@ class Search extends Component {
                   clearable={false}
                   searchable={false}
                   removeSelected={false}
-                  options={customerOptions}
-                  placeholder="search"
+                  options={continentOptions}
+                  placeholder="Continents"
+                  theme={theme => ({
+                    ...theme,
+                    boxShadow:
+                      "0 1px 1px rgba(0, 0, 0, 0.025) inset, 0 0 8px #ced4da",
+                    outline: "0 none",
+                    colors: {
+                      ...theme.colors,
+                      primary: "#ced4da",
+                      primary25: "#ced4da",
+                      primary50: "#9cc2da"
+                    }
+                  })}
                 />
               </div>
             </div>
           </div>
+        </div>
+        <div className="d-none mx-lg-4 mx-1">
+          <Favorites />
         </div>
       </div>
     );

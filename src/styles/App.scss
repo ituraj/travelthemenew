@@ -9,7 +9,8 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6 {
   font-family: "Karla", sans-serif;
 }
 
@@ -22,11 +23,65 @@ p {
 }
 
 .header-test {
-  height: 80vh;
+  height: 92vh;
+  background-image: url(../images/test.png);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.login,
+.cart {
+  height: 100vh;
   background-image: url(../images/test.png);
   background-size: cover;
   background-position: bottom;
   position: relative;
+}
+
+.login-form {
+  width: 50vw;
+  height: 60vh;
+}
+
+.checkout-form {
+  width: 60vw;
+  min-height: 60vh;
+}
+
+@media (max-width: 768px) {
+  .header-test {
+    height: 70vh;
+  }
+
+  .login-form {
+    width: 90vw;
+    height: 90vh;
+  }
+}
+
+.blog-image-wrapper {
+  height: 40vh;
+}
+
+.blog-image {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card-img-top {
+  max-height: 38vh;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.destination-image {
+  max-height: 50vh;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .search-container {
@@ -42,4 +97,16 @@ p {
   .card {
     flex: 0 0 auto;
   }
+}
+
+.css-10nd86i .css-1492t68,
+.css-xp4uvy,
+#promotionInput::placeholder,
+#promotionInputMobile::placeholder {
+  font-size: 0.875rem !important;
+  color: #545454 !important;
+}
+
+footer {
+  background-color: #e6eef6;
 }

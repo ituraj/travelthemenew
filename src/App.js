@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./styles/App.scss";
-// import axios from "axios";
+import json from "./assets/data.json";
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 import Search from "./components/Search";
 import Home from "./components/Home";
 import Shop from "./components/Shop";
@@ -14,57 +14,52 @@ import Blog from "./components/Blog";
 import Cart from "./components/Cart";
 import Login from "./components/Login";
 import Favorites from "./components/Favorites";
+import Category from "./components/Category";
 import Footer from "./components/Footer";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isVisible: true,
-      data: []
+      store: json.store,
+      product: json.product,
+      categories: json.categories
     };
   }
-
-  // componentDidMount() {
-  //   this.fetch();
-  // }
-
-  // fetch() {
-  //   axios
-  //     .get(url)
-  //     .then(
-  //       function(response) {
-  //         console.log(response);
-  //         this.setState({
-  //           data: response.data
-  //         });
-  //       }.bind(this)
-  //     )
-  //     .catch(function(error) {
-  //       console.log(error);
-  //     });
-  // }
 
   render() {
     return (
       <Router>
-        <div className="App">
-          <div className="header-container">
-            <Header />
-            <Search />
-          </div>
-          <div className="mt-0 mx-lg-5">
-            <Route exact path="/" component={Home} />
-            <Route path="/shop" component={Shop} />
-            <Route path="/product" component={Product} />
-            <Route path="/about" component={About} />
-            <Route path="/blog" component={Blog} />
-            <Route path="/cart" component={Cart} />
-            <Route path="/login" component={Login} />
-            <Route path="/favorites" component={Favorites} />
-          </div>
-          <Footer />
-        </div>
+        <Switch>
+          <Route exact path="/login" render={() => <Login />} />
+          <Route path="/cart" render={() => <Cart />} />
+          <Route
+            path="/"
+            render={props => (
+              <div className="App">
+                {props.children}
+                <Navbar />
+                <Search />
+                <div className="mt-0 mx-lg-5">
+                  <Route exact path="/" render={() => <Home />} />
+                  <Route path="/home" render={() => <Home />} />
+                  <Route path="/shop" render={() => <Shop />} />
+                  <Route path="/product" render={() => <Product />} />
+                  <Route path="/about" render={() => <About />} />
+                  <Route path="/blog" render={() => <Blog />} />
+                  <Route
+                    path="/favorites"
+                    render={() => (
+                      <Favorites {...props} product={this.state.product} />
+                    )}
+                  />
+                  <Route path="/category" render={() => <Category />} />
+                </div>
+                <Footer />
+              </div>
+            )}
+          />
+        </Switch>
       </Router>
     );
   }

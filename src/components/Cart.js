@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../styles/App.scss";
-import json from "./../assets/data.json";
 
 import { Link } from "react-router-dom";
 import CreditCardInput from "react-credit-card-input";
@@ -18,12 +17,9 @@ class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      store: json.store,
-      product: json.featured,
-      categories: json.categories,
       physicalOpened: false,
       digitalOpened: false,
-      status: "cart",
+      status: "",
       payment: "digital",
       cardNumber: "",
       expiry: "",
@@ -127,7 +123,7 @@ class Cart extends Component {
                 </Link>
               </div>
               <div className="row mx-auto scrolling-wrapper">
-                {this.state.product
+                {this.props.product
                   .map((product, id) => (
                     <div
                       className="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 mt-4"
@@ -143,7 +139,7 @@ class Cart extends Component {
                           <span className="row mx-auto justify-content-between">
                             <h5 className="card-title">{product.title}</h5>
                             <h6 className="text-primary font-weight-bold">
-                              {this.state.store.currency + product.price}
+                              {this.props.store.currency + product.price}
                             </h6>
                           </span>
                           <h6 className="card-subtitle mb-2 text-muted">

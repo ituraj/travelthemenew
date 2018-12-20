@@ -28,7 +28,8 @@ class App extends Component {
       favorite: false,
       favoriteArray: [],
       added: false,
-      addedArray: []
+      addedArray: [],
+      test: "lol"
     };
     this.addToFavorites = this.addToFavorites.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -73,7 +74,9 @@ class App extends Component {
             <Route exact path="/login" render={() => <Login />} />
             <Route
               path="/cart"
-              render={() => <Cart product={this.state.product} />}
+              render={() => (
+                <Cart product={this.state.product} store={this.state.store} />
+              )}
             />
             <Route
               path="/"
@@ -98,6 +101,9 @@ class App extends Component {
                             favorite={this.state.favorite}
                             added={this.state.added}
                             addToFavorites={this.addToFavorites}
+                            product={this.state.product}
+                            store={this.state.store}
+                            test={this.state.test}
                           />
                           <Blog />
                         </div>

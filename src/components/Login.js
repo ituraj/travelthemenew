@@ -72,7 +72,9 @@ class Login extends Component {
           <span className="navbar-brand mb-0 h1">
             <Link to="/" className="navbar-brand text-dark">
               <FontAwesomeIcon icon={faMap} style={{ color: "#9cc2da" }} />
-              <span className="pl-2 text-primary">ENJOY</span>
+              <span className="pl-2 text-primary">
+                ENJOY {this.props.product[0].title}
+              </span>
             </Link>
           </span>
         </nav>

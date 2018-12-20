@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "../styles/App.scss";
 
-import { Link } from "react-router-dom";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -18,23 +16,8 @@ class Footer extends Component {
   }
   render() {
     return (
-      <footer className="footer shadow-sm">
+      <footer className="footer">
         <div className="container text-center py-4">
-          <div className="row mx-auto justify-content-center">
-            <Link to="/" className="nav-item nav-link text-dark">
-              Home
-            </Link>
-
-            <Link to="/shop" className="nav-item nav-link text-dark">
-              Shop
-            </Link>
-            <Link to="/about" className="nav-item nav-link text-dark">
-              About
-            </Link>
-            <Link to="/blog" className="nav-item nav-link text-dark">
-              Blog
-            </Link>
-          </div>
           <div className="row mx-auto justify-content-center">
             <a
               href="https://www.facebook.com"
@@ -69,14 +52,19 @@ class Footer extends Component {
               <FontAwesomeIcon icon={faYoutube} />
             </a>
           </div>
-          <div className="row justify-content-center py-1">
-            <small>SITE BY JUMPSELLER</small>
+          <div className="row mx-auto justify-content-center">
+            <h6>San Francisco | CA 94131 | US</h6>
           </div>
           <div className="row justify-content-center py-1">
-            <small>IZABELA TURAJ</small>
+            <h6 className="my-0">SITE BY JUMPSELLER</h6>
           </div>
           <div className="row justify-content-center py-1">
-            <small>TERMS AND CONDITIONS | PRIVACY | LEGAL NOTICE</small>
+            <h6 className="my-0">IZABELA TURAJ</h6>
+          </div>
+          <div className="row justify-content-center py-1">
+            <h6 className="my-0">
+              TERMS AND CONDITIONS | PRIVACY | LEGAL NOTICE
+            </h6>
           </div>
         </div>
       </footer>

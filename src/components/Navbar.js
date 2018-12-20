@@ -45,10 +45,10 @@ class Navbar extends Component {
           >
             <div className="navbar-nav">
               <Link to="/shop" className="nav-item nav-link text-dark">
-                Shop
+                Destinations
               </Link>
-              <Link to="/about" className="nav-item nav-link text-dark">
-                About
+              <Link to="/contact" className="nav-item nav-link text-dark">
+                Contact
               </Link>
               <Link to="/blog" className="nav-item nav-link text-dark">
                 Blog
@@ -56,13 +56,29 @@ class Navbar extends Component {
             </div>
             <div className="navbar-nav">
               <Link to="/login" className="nav-item nav-link text-dark">
-                Login | Register
+                {this.props.user === "registered" ? (
+                  <span>Log Out</span>
+                ) : (
+                  <span>Log In</span>
+                )}
               </Link>
               <Link to="/cart" className="nav-item nav-link text-dark">
-                <FontAwesomeIcon icon={faShoppingCart} />
+                <FontAwesomeIcon
+                  icon={faShoppingCart}
+                  className={
+                    this.state.added ? "cart-icon primary" : "cart-icon"
+                  }
+                />
               </Link>
               <Link to="/favorites" className="nav-item nav-link text-dark">
-                <FontAwesomeIcon icon={faHeart} />
+                <FontAwesomeIcon
+                  icon={faHeart}
+                  className={
+                    this.state.favorite
+                      ? "favorite-icon danger"
+                      : "favorite-icon"
+                  }
+                />
               </Link>
             </div>
           </div>

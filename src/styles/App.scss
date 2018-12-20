@@ -23,10 +23,10 @@ p {
 }
 
 .header-test {
-  height: 92vh;
+  height: 52vh;
   background-image: url(../images/test.png);
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
   position: relative;
 }
 
@@ -40,13 +40,13 @@ p {
 }
 
 .login-form {
-  width: 50vw;
-  height: 60vh;
+  width: 40vw;
+  height: auto;
 }
 
 .checkout-form {
-  width: 60vw;
-  min-height: 60vh;
+  width: 50vw;
+  min-height: auto;
 }
 
 @media (max-width: 768px) {
@@ -54,9 +54,12 @@ p {
     height: 70vh;
   }
 
-  .login-form {
-    width: 90vw;
-    height: 90vh;
+  .login-form,
+  .checkout-form {
+    width: 100vw;
+    height: 100vh;
+    margin-top: 0 !important;
+    padding-bottom: 0 !important;
   }
 }
 
@@ -77,6 +80,13 @@ p {
   object-position: center;
 }
 
+.card-in-cart {
+  height: 20vh;
+  width: 100%;
+  object-fit: cover;
+  object-position: 50% 35%;
+}
+
 .destination-image {
   max-height: 50vh;
   width: 100%;
@@ -86,6 +96,14 @@ p {
 
 .search-container {
   margin-top: -2.1875rem;
+}
+
+.cart-icon:hover {
+  color: #9cc2da;
+}
+
+.favorite-icon:hover {
+  color: #c55;
 }
 
 .scrolling-wrapper {
@@ -109,4 +127,8 @@ p {
 
 footer {
   background-color: #e6eef6;
+}
+
+.btn-outline-primary:hover {
+  color: #fff !important;
 }

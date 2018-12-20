@@ -6,13 +6,13 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Search from "./components/Search";
-import Home from "./components/Home";
 import Shop from "./components/Shop";
 import Product from "./components/Product";
-import About from "./components/About";
+import Contact from "./components/Contact";
 import Blog from "./components/Blog";
 import Cart from "./components/Cart";
 import Login from "./components/Login";
+import Featured from "./components/Featured";
 import Favorites from "./components/Favorites";
 import Category from "./components/Category";
 import Footer from "./components/Footer";
@@ -22,46 +22,102 @@ class App extends Component {
     super(props);
     this.state = {
       store: json.store,
-      product: json.product,
-      categories: json.categories
+      product: json.featured,
+      categories: json.categories,
+      fetching: false,
+      favorite: false,
+      favoriteArray: [],
+      added: false,
+      addedArray: []
     };
+    this.addToFavorites = this.addToFavorites.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentWillMount() {
+    this.setState({
+      fetching: true
+    });
+  }
+
+  componentDidMount() {
+    this.setState({
+      fetching: false
+    });
+  }
+
+  addToFavorites() {
+    // needs to be filtered
+    this.setState({ favorite: true });
+  }
+
+  handleChange(e) {
+    const target = e.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+    e.preventDefault();
+    e.stopPropagation();
   }
 
   render() {
-    return (
-      <Router>
-        <Switch>
-          <Route exact path="/login" render={() => <Login />} />
-          <Route path="/cart" render={() => <Cart />} />
-          <Route
-            path="/"
-            render={props => (
-              <div className="App">
-                {props.children}
-                <Navbar />
-                <Search />
-                <div className="mt-0 mx-lg-5">
-                  <Route exact path="/" render={() => <Home />} />
-                  <Route path="/home" render={() => <Home />} />
-                  <Route path="/shop" render={() => <Shop />} />
-                  <Route path="/product" render={() => <Product />} />
-                  <Route path="/about" render={() => <About />} />
-                  <Route path="/blog" render={() => <Blog />} />
-                  <Route
-                    path="/favorites"
-                    render={() => (
-                      <Favorites {...props} product={this.state.product} />
-                    )}
+    if (this.state.fetching) {
+      return <div>fetching</div>;
+    } else {
+      return (
+        <Router>
+          <Switch>
+            <Route exact path="/login" render={() => <Login />} />
+            <Route
+              path="/cart"
+              render={() => <Cart product={this.state.product} />}
+            />
+            <Route
+              path="/"
+              render={props => (
+                <div className="App">
+                  {props.children}
+                  <Navbar
+                    favorite={this.state.favorite}
+                    added={this.state.added}
+                    user={this.state.user}
                   />
-                  <Route path="/category" render={() => <Category />} />
+                  <Search />
+                  <div className="mt-0 mx-lg-5">
+                    <Route
+                      exact
+                      path="/"
+                      render={() => (
+                        <div className="home mb-4">
+                          <Featured />
+                          <Favorites
+                            {...props}
+                            favorite={this.state.favorite}
+                            added={this.state.added}
+                            addToFavorites={this.addToFavorites}
+                          />
+                          <Blog />
+                        </div>
+                      )}
+                    />
+                    <Route path="/shop" render={() => <Shop />} />
+                    <Route path="/product" render={() => <Product />} />
+                    <Route path="/contact" render={() => <Contact />} />
+                    <Route path="/blog" render={() => <Blog />} />
+                    <Route path="/favorites" render={() => <Favorites />} />
+                    <Route path="/category" render={() => <Category />} />
+                  </div>
+                  <Footer />
                 </div>
-                <Footer />
-              </div>
-            )}
-          />
-        </Switch>
-      </Router>
-    );
+              )}
+            />
+          </Switch>
+        </Router>
+      );
+    }
   }
 }
 

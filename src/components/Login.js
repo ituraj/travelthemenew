@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import PropTypes from "prop-types";
 import "../styles/App.scss";
 
@@ -20,30 +21,44 @@ class Login extends Component {
       name: "",
       email: "",
       password: "",
+      loggedIn: false,
       subscribed: false,
-      registered: false
+      user: "registered",
+      value: ""
     };
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleuserSubmit = this.handleUserSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    // this.handleNewUser = this.handleNewUser.bind(this);
   }
+
+  handleSubmit(e) {
+    this.context.router.history.push(`/`);
+    e.preventDefault();
+  }
+
+  // handleUserSubmit(e) {
+  //   this.context.router.history.push(`/`);
+  //   e.preventDefault();
+  // }
+
+  // handleNewUser(e) {
+  //   this.setState({
+  //     user: "registered",
+  //     loggedIn: true
+  //   });
+  // }
 
   handleChange(e) {
     const target = e.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
 
     this.setState({
-      [name]: value,
+      [name]: e.target.value,
       type: this.state.type === "password" ? "password" : "input"
     });
     e.preventDefault();
     e.stopPropagation();
-  }
-
-  handleSubmit(e) {
-    this.context.router.history.push(`/home`);
-    e.preventDefault();
-    console.log(this.state.name + this.state.email + this.state.password);
   }
 
   static contextTypes = {
@@ -61,7 +76,7 @@ class Login extends Component {
             </Link>
           </span>
         </nav>
-        {this.state.registered === true ? (
+        {this.state.user === "registered" && this.state.loggedIn === false ? (
           <div className="login-form-wrapper">
             <div className="bg-white box-shadow box mx-auto my-5 p-5 login-form">
               <div className="login-header text-center">
@@ -113,7 +128,7 @@ class Login extends Component {
                     <div className="input-group-append">
                       <button
                         type="submit"
-                        className="btn btn-outline-secondary"
+                        className="btn btn-outline-primary"
                         id="button-addon2"
                       >
                         Log In
@@ -124,13 +139,13 @@ class Login extends Component {
               </form>
             </div>
           </div>
-        ) : (
+        ) : this.state.user === "" ? (
           <div className="register-form-wrapper">
             <div className="bg-white box-shadow box mx-auto my-5 p-5 login-form">
               <div className="login-header text-center">
                 <h4>Hello World!</h4>
               </div>
-              <form onSubmit={this.handleSubmit}>
+              <form onSubmit={this.handleUserSubmit}>
                 <div className="form-group">
                   <label htmlFor="exampleInputEmail3">
                     <h6>Name</h6>
@@ -198,10 +213,11 @@ class Login extends Component {
                     <div className="input-group-append">
                       <button
                         type="submit"
-                        className="btn btn-outline-secondary"
+                        className="btn btn-outline-primary"
                         id="button-addon2"
+                        onClick={this.handleNewUser}
                       >
-                        Sign In
+                        Register
                       </button>
                     </div>
                   </div>
@@ -224,7 +240,7 @@ class Login extends Component {
               </form>
             </div>
           </div>
-        )}
+        ) : null}
       </div>
     );
   }

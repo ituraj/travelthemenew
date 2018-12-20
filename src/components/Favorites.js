@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "../styles/App.scss";
-import json from "../assets/data.json";
 import { Link } from "react-router-dom";
+
+import json from "./../assets/data.json";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -15,7 +16,7 @@ class Favorites extends Component {
     super(props);
     this.state = {
       store: json.store,
-      product: json.product,
+      product: json.featured,
       categories: json.categories
     };
   }
@@ -24,7 +25,7 @@ class Favorites extends Component {
     return (
       <div className="favorites mx-lg-4 mx-1">
         <div className="row mx-auto justify-content-between align-items-center">
-          <h4 className="ml-3 mb-0">Recommended for you:</h4>
+          <h4 className="ml-3 my-3">Recommended for you:</h4>
           <Link
             to="/shop"
             className="btn btn-outline-primary d-none d-sm-block mr-3"
@@ -33,51 +34,84 @@ class Favorites extends Component {
           </Link>
         </div>
         <div className="row mx-auto scrolling-wrapper">
-          {this.state.product.map((product, id) => (
-            <div
-              className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 my-4"
-              key={id}
-            >
-              <div className="card mx-auto">
-                <img
-                  className="card-img-top"
-                  src={require(`images/${product.main_image}`)}
-                  alt="Card cap"
-                />
-                <div className="card-body">
-                  <h5 className="card-title">{product.title}</h5>
-                  <h6 className="card-subtitle mb-2 text-muted">
-                    {product.town}
-                  </h6>
-                  <p className="card-text">{product.description}</p>
-                </div>
-                <div className="row d-flex justify-content-between align-items-center py-2 px-4">
-                  <div className="col-8">
-                    <Link
-                      to="/product"
-                      className="text-dark d-flex align-items-center"
-                    >
-                      <span className="pr-0 pl-0">Explore</span>
-                      <FontAwesomeIcon
-                        icon={faChevronRight}
-                        size="2x"
-                        className="pl-2"
-                      />
-                    </Link>
+          {this.state.product
+            .map((product, id) => (
+              <div
+                className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 my-4"
+                key={id}
+              >
+                <div className="card mx-auto h-100">
+                  <img
+                    className="card-img-top"
+                    src={require(`images/${product.main_image}`)}
+                    alt="Card cap"
+                  />
+                  <div className="card-body">
+                    <span className="row mx-auto justify-content-between">
+                      <h5 className="card-title">{product.title}</h5>
+                      <h5 className="text-primary font-weight-bold">
+                        {this.state.store.currency + product.price}
+                      </h5>
+                    </span>
+                    <h6 className="card-subtitle mb-2 text-muted">
+                      {product.town}
+                    </h6>
+                    <p className="card-text">{product.description}</p>
                   </div>
-                  <div className="col-4 text-right text-nowrap">
-                    <Link to="/cart" className="text-dark pr-2">
-                      <FontAwesomeIcon icon={faShoppingCart} />
-                    </Link>
+                  <div className="row d-flex justify-content-between align-items-center py-2 px-4">
+                    <div className="col-8">
+                      <Link
+                        to="/product"
+                        className="text-dark d-flex align-items-center"
+                      >
+                        <span className="pr-0 pl-0">Explore</span>
+                        <FontAwesomeIcon
+                          icon={faChevronRight}
+                          size="2x"
+                          className="pl-2"
+                        />
+                      </Link>
+                    </div>
+                    <div className="col-4 text-right text-nowrap">
+                      <span className="text-dark pr-2">
+                        {!this.props.added ? (
+                          <FontAwesomeIcon
+                            icon={faShoppingCart}
+                            className="cart-icon"
+                          />
+                        ) : (
+                          <FontAwesomeIcon
+                            icon={faShoppingCart}
+                            className="cart-icon"
+                            color="#9cc2da"
+                          />
+                        )}
+                      </span>
 
-                    <Link to="/favorites" className="text-dark pl-2">
-                      <FontAwesomeIcon icon={faHeart} />
-                    </Link>
+                      <span
+                        to="/favorites"
+                        className="text-dark pl-2"
+                        onClick={this.props.addToFavorites}
+                      >
+                        {!this.props.favorite ? (
+                          <FontAwesomeIcon
+                            icon={faHeart}
+                            className="favorite-icon"
+                          />
+                        ) : (
+                          <FontAwesomeIcon
+                            icon={faHeart}
+                            className="favorite-icon"
+                            color="#c55"
+                          />
+                        )}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+            .slice(0, 4)}
         </div>
       </div>
     );

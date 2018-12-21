@@ -58,7 +58,7 @@ class Shop extends Component {
                   <div className="card mx-auto h-100">
                     <img
                       className="card-img-top"
-                      src={require(`images/${product.main_image}`)}
+                      // src={require(`images/${product.main_image}`)}
                       alt="Card cap"
                     />
                     <div className="card-body">
@@ -144,7 +144,7 @@ class Shop extends Component {
                   <div className="card mx-auto h-100">
                     <img
                       className="card-img-top"
-                      src={require(`images/${product.main_image}`)}
+                      // src={require(`images/${product.main_image}`)}
                       alt="Card cap"
                     />
                     <div className="card-body">
@@ -248,7 +248,7 @@ class Shop extends Component {
                   <div className="card mx-auto h-100">
                     <img
                       className="card-img-top"
-                      src={require(`images/africa/${product.main_image}`)}
+                      // src={require(`images/africa/${product.main_image}`)}
                       alt="Card cap"
                     />
                     <div className="card-body">
@@ -334,7 +334,7 @@ class Shop extends Component {
                   <div className="card mx-auto h-100">
                     <img
                       className="card-img-top"
-                      src={require(`images/africa/${product.main_image}`)}
+                      // src={require(`images/africa/${product.main_image}`)}
                       alt="Card cap"
                     />
                     <div className="card-body">
@@ -437,7 +437,7 @@ class Shop extends Component {
                   <div className="card mx-auto h-100">
                     <img
                       className="card-img-top"
-                      src={require(`images/spring/${product.main_image}`)}
+                      // src={require(`images/spring/${product.main_image}`)}
                       alt="Card cap"
                     />
                     <div className="card-body">
@@ -523,7 +523,7 @@ class Shop extends Component {
                   <div className="card mx-auto h-100">
                     <img
                       className="card-img-top"
-                      src={require(`images/spring/${product.main_image}`)}
+                      // src={require(`images/spring/${product.main_image}`)}
                       alt="Card cap"
                     />
                     <div className="card-body">

@@ -33,7 +33,7 @@ class Favorites extends Component {
                   <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 my-4">
                     <img
                       className="card-img-top"
-                      src={require(`images/${product.main_image}`)}
+                      // src={require(`images/${product.main_image}`)}
                       alt="Card cap"
                     />
                   </div>

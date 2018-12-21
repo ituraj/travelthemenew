@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import "./styles/App.scss";
 import json from "./assets/data.json";
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Search from "./components/Search";
@@ -82,6 +87,7 @@ class App extends Component {
         <DataContext.Provider value={this.state.dataContext}>
           <Router>
             <Switch>
+              <Redirect from="/traveltheme" to="/" />
               <Route exact path="/login" render={() => <Login />} />
               <Route
                 path="/cart"
@@ -104,7 +110,7 @@ class App extends Component {
                       <Route
                         exact
                         path="/"
-                        render={() => (
+                        render={routerProps => (
                           <div className="home mb-4">
                             <Featured />
                             <Favorites

@@ -134,7 +134,7 @@ class Cart extends Component {
                       <div className="card mx-auto">
                         <img
                           className="card-img-top card-in-cart"
-                          src={require(`images/${product.main_image}`)}
+                          // src={require(`images/${product.main_image}`)}
                           alt="Card cap"
                         />
                         <div className="card-body">

@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import "../styles/App.scss";
 import json from "../assets/data.json";
+import { DataContext } from "../dataContext";
 
-import denmarkImage from "../images/denmark.jpg";
 import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/pro-light-svg-icons";
 
 class Favorites extends Component {
+  static contextType = DataContext;
   constructor(props) {
     super(props);
     this.state = {
@@ -21,7 +22,7 @@ class Favorites extends Component {
   render() {
     return (
       <div className="featured mx-lg-4 mx-1">
-        {this.state.product.map((product, id) => (
+        {this.context.data.featured.map((product, id) => (
           <div key={id}>
             {product.featured && product.created_at === "January" ? (
               <div>
@@ -31,26 +32,18 @@ class Favorites extends Component {
                 <div className="row mx-auto">
                   <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 my-4">
                     <img
-                      src={denmarkImage}
-                      alt="test"
-                      className="destination-image"
+                      className="card-img-top"
+                      src={require(`images/${product.main_image}`)}
+                      alt="Card cap"
                     />
                   </div>
                   <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 my-4">
                     <span>
                       <h1 className="my-0">{product.title}</h1>
-                      <h6 className="mb-4 text-muted">Denmark</h6>
+                      <h6 className="mb-4 text-muted">{product.country}</h6>
                     </span>
 
-                    <p>
-                      With Copenhagen being top destination for travel in 2019
-                      Denmark has received the attention it deserves. However
-                      there is much more to this country than the capital. Check
-                      it yourself! With Copenhagen being top destination for
-                      travel in 2019 Denmark has received the attention it
-                      deserves. However there is much more to this country than
-                      the capital. Check it yourself!
-                    </p>
+                    <p>{product.description}</p>
                     <Link
                       to="/product"
                       className="text-dark d-flex align-items-center"

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../styles/App.scss";
 import { Link } from "react-router-dom";
+import { DataContext } from "../dataContext";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,6 +11,8 @@ import {
 } from "@fortawesome/pro-light-svg-icons";
 
 class Favorites extends Component {
+  static contextType = DataContext;
+
   constructor(props) {
     super(props);
     this.state = {};
@@ -20,7 +23,6 @@ class Favorites extends Component {
       <div className="favorites mx-lg-4 mx-1">
         <div className="row mx-auto justify-content-between align-items-center">
           <h4 className="ml-3 my-3">Recommended for you:</h4>
-          <h4 className="ml-3 my-3">{this.props.test}</h4>
           <Link
             to="/shop"
             className="btn btn-outline-primary d-none d-sm-block mr-3"
@@ -29,7 +31,7 @@ class Favorites extends Component {
           </Link>
         </div>
         <div className="row mx-auto scrolling-wrapper">
-          {this.props.product
+          {this.context.data.featured
             .map((product, id) => (
               <div
                 className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 my-4"
@@ -45,7 +47,7 @@ class Favorites extends Component {
                     <span className="row mx-auto justify-content-between">
                       <h5 className="card-title">{product.title}</h5>
                       <h5 className="text-primary font-weight-bold">
-                        {this.props.store.currency + product.price}
+                        {this.context.data.store.currency + product.price}
                       </h5>
                     </span>
                     <h6 className="card-subtitle mb-2 text-muted">

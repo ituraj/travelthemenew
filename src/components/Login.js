@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import PropTypes from "prop-types";
+import { DataContext } from "../dataContext";
 import "../styles/App.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,6 +15,7 @@ import {
 import { Link } from "react-router-dom";
 
 class Login extends Component {
+  static contextType = DataContext;
   constructor(props) {
     super(props);
     this.state = {
@@ -72,9 +74,7 @@ class Login extends Component {
           <span className="navbar-brand mb-0 h1">
             <Link to="/" className="navbar-brand text-dark">
               <FontAwesomeIcon icon={faMap} style={{ color: "#9cc2da" }} />
-              <span className="pl-2 text-primary">
-                ENJOY {this.props.product[0].title}
-              </span>
+              <span className="pl-2 text-primary">ENJOY</span>
             </Link>
           </span>
         </nav>

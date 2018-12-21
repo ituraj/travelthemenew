@@ -17,13 +17,23 @@ import Favorites from "./components/Favorites";
 import Category from "./components/Category";
 import Footer from "./components/Footer";
 
+import { DataContext } from "./dataContext";
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      store: json.store,
-      product: json.featured,
-      categories: json.categories,
+      dataContext: {
+        data: json,
+        setData: newData => {
+          this.setState(state => ({
+            dataContext: {
+              ...state.dataContext,
+              data: { ...state.dataContext.data, ...newData }
+            }
+          }));
+        }
+      },
       fetching: false,
       favorite: false,
       favoriteArray: [],
@@ -69,59 +79,61 @@ class App extends Component {
       return <div>fetching</div>;
     } else {
       return (
-        <Router>
-          <Switch>
-            <Route exact path="/login" render={() => <Login />} />
-            <Route
-              path="/cart"
-              render={() => (
-                <Cart product={this.state.product} store={this.state.store} />
-              )}
-            />
-            <Route
-              path="/"
-              render={props => (
-                <div className="App">
-                  {props.children}
-                  <Navbar
-                    favorite={this.state.favorite}
-                    added={this.state.added}
-                    user={this.state.user}
-                  />
-                  <Search />
-                  <div className="mt-0 mx-lg-5">
-                    <Route
-                      exact
-                      path="/"
-                      render={() => (
-                        <div className="home mb-4">
-                          <Featured />
-                          <Favorites
-                            {...props}
-                            favorite={this.state.favorite}
-                            added={this.state.added}
-                            addToFavorites={this.addToFavorites}
-                            product={this.state.product}
-                            store={this.state.store}
-                            test={this.state.test}
-                          />
-                          <Blog />
-                        </div>
-                      )}
+        <DataContext.Provider value={this.state.dataContext}>
+          <Router>
+            <Switch>
+              <Route exact path="/login" render={() => <Login />} />
+              <Route
+                path="/cart"
+                render={() => (
+                  <Cart product={this.state.product} store={this.state.store} />
+                )}
+              />
+              <Route
+                path="/"
+                render={props => (
+                  <div className="App">
+                    {props.children}
+                    <Navbar
+                      favorite={this.state.favorite}
+                      added={this.state.added}
+                      user={this.state.user}
                     />
-                    <Route path="/shop" render={() => <Shop />} />
-                    <Route path="/product" render={() => <Product />} />
-                    <Route path="/contact" render={() => <Contact />} />
-                    <Route path="/blog" render={() => <Blog />} />
-                    <Route path="/favorites" render={() => <Favorites />} />
-                    <Route path="/category" render={() => <Category />} />
+                    <Search />
+                    <div className="mt-0 mx-lg-5">
+                      <Route
+                        exact
+                        path="/"
+                        render={() => (
+                          <div className="home mb-4">
+                            <Featured />
+                            <Favorites
+                              {...props}
+                              favorite={this.state.favorite}
+                              added={this.state.added}
+                              addToFavorites={this.addToFavorites}
+                              product={this.state.product}
+                              store={this.state.store}
+                              test={this.state.test}
+                            />
+                            <Blog />
+                          </div>
+                        )}
+                      />
+                      <Route path="/shop" render={() => <Shop />} />
+                      <Route path="/product" render={() => <Product />} />
+                      <Route path="/contact" render={() => <Contact />} />
+                      <Route path="/blog" render={() => <Blog />} />
+                      <Route path="/favorites" render={() => <Favorites />} />
+                      <Route path="/category" render={() => <Category />} />
+                    </div>
+                    <Footer />
                   </div>
-                  <Footer />
-                </div>
-              )}
-            />
-          </Switch>
-        </Router>
+                )}
+              />
+            </Switch>
+          </Router>
+        </DataContext.Provider>
       );
     }
   }

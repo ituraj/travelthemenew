@@ -4,6 +4,7 @@ import "../styles/App.scss";
 import { Link } from "react-router-dom";
 import CreditCardInput from "react-credit-card-input";
 import { Collapse } from "react-collapse";
+import { DataContext } from "../dataContext";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,6 +15,8 @@ import {
 } from "@fortawesome/pro-light-svg-icons";
 
 class Cart extends Component {
+  static contextType = DataContext;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -109,7 +112,6 @@ class Cart extends Component {
               <div className="row mx-3 mb-3 border-bottom">
                 <div className="col text-center">
                   <h4>Your backpack is empty.</h4>
-
                   <p>Check out our offer and go on an adventure!</p>
                 </div>
               </div>
@@ -123,7 +125,7 @@ class Cart extends Component {
                 </Link>
               </div>
               <div className="row mx-auto scrolling-wrapper">
-                {this.props.product
+                {this.context.data.featured
                   .map((product, id) => (
                     <div
                       className="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 mt-4"
@@ -139,7 +141,7 @@ class Cart extends Component {
                           <span className="row mx-auto justify-content-between">
                             <h5 className="card-title">{product.title}</h5>
                             <h6 className="text-primary font-weight-bold">
-                              {this.props.store.currency + product.price}
+                              {this.context.data.store.currency + product.price}
                             </h6>
                           </span>
                           <h6 className="card-subtitle mb-2 text-muted">
@@ -161,7 +163,18 @@ class Cart extends Component {
                             </Link>
                           </div>
                           <div className="col-4 text-right text-nowrap">
-                            <Link to="/cart" className="text-dark pr-2">
+                            <Link
+                              to="/cart"
+                              className="text-dark pr-2"
+                              onClick={() => {
+                                this.context.setData({
+                                  cartItems: [
+                                    ...this.context.data.cartItems,
+                                    product
+                                  ]
+                                });
+                              }}
+                            >
                               <FontAwesomeIcon icon={faShoppingCart} />
                             </Link>
 
@@ -373,28 +386,32 @@ class Cart extends Component {
               <div className="row mx-3 mb-3 justify-content-center">
                 <h4>Shopping Cart</h4>
               </div>
+              <div className="row mx-3 mb-3 justify-content-center">
+                <h6>
+                  You have {this.context.data.cartItems.length} items in the
+                  backpack.
+                </h6>
+              </div>
               <div className="row mx-auto">
                 <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                   <div className="card mx-auto">
                     <img
                       className="card-img-top card-in-cart"
-                      src={require(`images/${
-                        this.state.product[0].main_image
-                      }`)}
+                      // src={require(`images/${product[0].main_image}`)}
                       alt="Card cap"
                     />
                     <div className="card-body">
                       <span className="row mx-auto justify-content-between">
                         <h5 className="card-title">
-                          {this.state.product[0].title}
+                          {this.context.data.featured[0].title}
                         </h5>
                         <h6 className="text-primary font-weight-bold">
-                          {this.state.store.currency +
-                            this.state.product[0].price}
+                          {this.context.data.store.currency +
+                            this.context.data.featured[0].price}
                         </h6>
                       </span>
                       <h6 className="card-subtitle mb-2 text-muted">
-                        {this.state.product[0].town}
+                        {this.context.data.featured[0].town}
                       </h6>
                     </div>
                   </div>
@@ -402,15 +419,15 @@ class Cart extends Component {
                 <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                   <div className="row mx-auto">
                     <h6>
-                      Product: <span>{this.state.product[0].name}</span>
+                      Product: <span>{this.context.data.featured[0].name}</span>
                     </h6>
                   </div>
                   <div className="row mx-auto">
                     <h6>
                       Price:{" "}
                       <span>
-                        {this.state.store.currency +
-                          this.state.product[0].price}
+                        {this.context.data.store.currency +
+                          this.context.data.featured[0].price}
                       </span>
                     </h6>
                   </div>
@@ -418,8 +435,8 @@ class Cart extends Component {
                     <h6>
                       Total:{" "}
                       <span>
-                        {this.state.store.currency +
-                          this.state.product[0].price}
+                        {this.context.data.store.currency +
+                          this.context.data.featured[0].price}
                       </span>
                     </h6>
                   </div>

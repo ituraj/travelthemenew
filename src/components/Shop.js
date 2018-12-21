@@ -19,13 +19,25 @@ class Shop extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false
+      openOne: false,
+      openTwo: false,
+      openThree: false
     };
-    this.toggleCollapse = this.toggleCollapse.bind(this);
+    this.toggleCollapseOne = this.toggleCollapseOne.bind(this);
+    this.toggleCollapseTwo = this.toggleCollapseTwo.bind(this);
+    this.toggleCollapseThree = this.toggleCollapseThree.bind(this);
   }
 
-  toggleCollapse() {
-    this.setState({ isOpened: !this.state.isOpened });
+  toggleCollapseOne() {
+    this.setState({ openOne: !this.state.openOne });
+  }
+
+  toggleCollapseTwo() {
+    this.setState({ openTwo: !this.state.openTwo });
+  }
+
+  toggleCollapseThree() {
+    this.setState({ openThree: !this.state.openThree });
   }
 
   render() {
@@ -37,9 +49,9 @@ class Shop extends Component {
           {this.context.data.featured.length > 4 ? (
             <button
               className="btn btn-outline-primary mr-3"
-              onClick={this.toggleCollapse}
+              onClick={this.toggleCollapseOne}
             >
-              See more
+              {!this.state.openOne ? "See more" : "See less"}
             </button>
           ) : null}
         </div>
@@ -129,7 +141,7 @@ class Shop extends Component {
               .slice(0, 4)}
           </div>
         </div>
-        <Collapse isOpened={this.state.isOpened}>
+        <Collapse isOpened={this.state.openOne}>
           <div
             className={
               width < 1008 ? "row mx-auto scrolling-wrapper" : "row mx-auto"
@@ -226,9 +238,9 @@ class Shop extends Component {
           {this.context.data.africa.length > 4 ? (
             <button
               className="btn btn-outline-primary mr-3"
-              onClick={this.toggleCollapse}
+              onClick={this.toggleCollapseTwo}
             >
-              See more
+              {!this.state.openTwo ? "See more" : "See less"}
             </button>
           ) : null}
         </div>
@@ -319,7 +331,7 @@ class Shop extends Component {
               .slice(0, 4)}
           </div>
         </div>
-        <Collapse isOpened={this.state.isOpened}>
+        <Collapse isOpened={this.state.openTwo}>
           <div
             className={
               width < 1008 ? "row mx-auto scrolling-wrapper" : "row mx-auto"
@@ -415,9 +427,9 @@ class Shop extends Component {
           {this.context.data.featured.length > 4 ? (
             <button
               className="btn btn-outline-primary mr-3"
-              onClick={this.toggleCollapse}
+              onClick={this.toggleCollapseThree}
             >
-              See more
+              {!this.state.openThree ? "See more" : "See less"}
             </button>
           ) : null}
         </div>
@@ -508,7 +520,7 @@ class Shop extends Component {
               .slice(0, 4)}
           </div>
         </div>
-        <Collapse isOpened={this.state.isOpened}>
+        <Collapse isOpened={this.state.openThree}>
           <div
             className={
               width < 1008 ? "row mx-auto scrolling-wrapper" : "row mx-auto"

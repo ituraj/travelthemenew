@@ -22,7 +22,7 @@ class Cart extends Component {
     this.state = {
       physicalOpened: false,
       digitalOpened: false,
-      status: "",
+      status: "cart",
       payment: "digital",
       cardNumber: "",
       expiry: "",
@@ -78,6 +78,7 @@ class Cart extends Component {
   }
 
   render() {
+    var featured = this.context.data.featured;
     return (
       <div className="cart">
         <nav className="navbar navbar-light bg-white mt-0">
@@ -393,11 +394,11 @@ class Cart extends Component {
                 </h6>
               </div>
               <div className="row mx-auto">
-                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 px-5 mb-5">
                   <div className="card mx-auto">
                     <img
                       className="card-img-top card-in-cart"
-                      // src={require(`images/${product[0].main_image}`)}
+                      src={require(`images/${featured[0].main_image}`)}
                       alt="Card cap"
                     />
                     <div className="card-body">
@@ -416,7 +417,7 @@ class Cart extends Component {
                     </div>
                   </div>
                 </div>
-                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 px-5 mb-5">
                   <div className="row mx-auto">
                     <h6>
                       Product: <span>{this.context.data.featured[0].name}</span>

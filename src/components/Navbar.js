@@ -4,90 +4,105 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faShoppingCart,
   faHeart,
-  faMap
+  faMap,
+  faBars
 } from "@fortawesome/pro-light-svg-icons";
-
+// import { Collapse } from "react-collapse";
 import { Link } from "react-router-dom";
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isOpened: false
+    };
+    // this.toggleCollapse = this.toggleCollapse.bind(this);
   }
 
-  mobileMenuToggle() {
-    var navbarMobile = document.getElementById("navbarMobile");
-    return navbarMobile.classList.add("show");
-  }
+  // toggleCollapse() {
+  //   this.setState({ isOpened: !this.state.isOpened });
+  // }
+
   render() {
-    return (
-      <div className="header">
-        <nav className="navbar fixed-top navbar-expand-md bg-white shadow-sm">
-          <Link to="/" className="navbar-brand text-dark">
-            <FontAwesomeIcon icon={faMap} style={{ color: "#9cc2da" }} />
-            <span className="pl-2 text-primary">ENJOY</span>
-          </Link>
-          <button
-            className="navbar-toggler border-0"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarMobile"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-            onClick={this.mobileMenuToggle}
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div
-            className="collapse navbar-collapse justify-content-between"
-            id="navbarMobile"
-          >
-            <div className="navbar-nav">
-              <Link to="/shop" className="nav-item nav-link text-dark">
-                Destinations
-              </Link>
-              <Link to="/contact" className="nav-item nav-link text-dark">
-                Contact
-              </Link>
-              <Link to="/blog" className="nav-item nav-link text-dark">
-                Blog
+    const width = window.innerWidth;
+    if (width >= 768) {
+      return (
+        <div className="header">
+          <nav className="navbar fixed-top navbar-expand-md bg-white shadow-sm">
+            <Link to="/" className="navbar-brand text-dark">
+              <FontAwesomeIcon icon={faMap} style={{ color: "#9cc2da" }} />
+              <span className="pl-2 text-primary">ENJOY</span>
+            </Link>
+            <div
+              className="collapse navbar-collapse justify-content-between"
+              id="navbarMobile"
+            >
+              <div className="navbar-nav">
+                <Link to="/shop" className="nav-item nav-link text-dark">
+                  Destinations
+                </Link>
+                <Link to="/contact" className="nav-item nav-link text-dark">
+                  Contact
+                </Link>
+                <Link to="/blog" className="nav-item nav-link text-dark">
+                  Blog
+                </Link>
+              </div>
+              <div className="navbar-nav">
+                <Link to="/login" className="nav-item nav-link text-dark">
+                  {this.props.user === "registered" ? (
+                    <span>Log Out</span>
+                  ) : (
+                    <span>Log In</span>
+                  )}
+                </Link>
+                <Link to="/cart" className="nav-item nav-link text-dark">
+                  <FontAwesomeIcon
+                    icon={faShoppingCart}
+                    className={
+                      this.state.added ? "cart-icon primary" : "cart-icon"
+                    }
+                  />
+                </Link>
+                <Link to="/favorites" className="nav-item nav-link text-dark">
+                  <FontAwesomeIcon
+                    icon={faHeart}
+                    className={
+                      this.state.favorite
+                        ? "favorite-icon danger"
+                        : "favorite-icon"
+                    }
+                  />
+                </Link>
+              </div>
+            </div>
+          </nav>
+          <div className="container-fluid px-0">
+            <div className="header-test" />
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="header">
+          <div className="row justify-content-between bg-light shadow-sm mobile-nav">
+            <div className="col ml-3 py-3">
+              <Link to="/">
+                <FontAwesomeIcon icon={faMap} style={{ color: "#9cc2da" }} />
+                <span className="pl-2 text-primary">ENJOY</span>
               </Link>
             </div>
-            <div className="navbar-nav">
-              <Link to="/login" className="nav-item nav-link text-dark">
-                {this.props.user === "registered" ? (
-                  <span>Log Out</span>
-                ) : (
-                  <span>Log In</span>
-                )}
-              </Link>
-              <Link to="/cart" className="nav-item nav-link text-dark">
-                <FontAwesomeIcon
-                  icon={faShoppingCart}
-                  className={
-                    this.state.added ? "cart-icon primary" : "cart-icon"
-                  }
-                />
-              </Link>
-              <Link to="/favorites" className="nav-item nav-link text-dark">
-                <FontAwesomeIcon
-                  icon={faHeart}
-                  className={
-                    this.state.favorite
-                      ? "favorite-icon danger"
-                      : "favorite-icon"
-                  }
-                />
-              </Link>
+            <div className="col text-right align-self-center py-1 pr-4">
+              {" "}
+              <FontAwesomeIcon icon={faBars} />
             </div>
           </div>
-        </nav>
-        <div className="container-fluid px-0">
-          <div className="header-test" />
+          <div className="container-fluid px-0">
+            <div className="header-test" />
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 

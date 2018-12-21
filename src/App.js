@@ -39,14 +39,18 @@ class App extends Component {
         }
       },
       fetching: false,
-      favorite: false,
-      favoriteArray: [],
-      added: false,
-      addedArray: [],
-      test: "lol"
+      type: "input",
+      name: "",
+      email: "",
+      password: "",
+      loggedIn: false,
+      subscribed: false,
+      user: "",
+      value: ""
     };
-    this.addToFavorites = this.addToFavorites.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleNewUser = this.handleNewUser.bind(this);
+    this.handleUserSubmit = this.handleUserSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -61,21 +65,29 @@ class App extends Component {
     });
   }
 
-  addToFavorites() {
-    // needs to be filtered
-    this.setState({ favorite: true });
-  }
-
   handleChange(e) {
     const target = e.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
 
     this.setState({
-      [name]: value
+      [name]: value,
+      type: this.state.type === "password" ? "password" : "input"
     });
     e.preventDefault();
     e.stopPropagation();
+  }
+
+  handleUserSubmit(e) {
+    this.props.history.push(`/`);
+    e.preventDefault();
+  }
+
+  handleNewUser(e) {
+    this.setState({
+      user: "registered",
+      loggedIn: true
+    });
   }
 
   render() {
@@ -87,40 +99,41 @@ class App extends Component {
           <Router>
             <Switch>
               <Redirect from="/traveltheme" to="/" />
-              <Route exact path="/login" render={() => <Login />} />
               <Route
-                path="/cart"
+                exact
+                path="/login"
                 render={() => (
-                  <Cart product={this.state.product} store={this.state.store} />
+                  <Login
+                    type={this.state.type}
+                    name={this.state.name}
+                    email={this.state.email}
+                    password={this.state.password}
+                    loggedIn={this.state.loggedIn}
+                    subscribed={this.state.subscribed}
+                    user={this.state.user}
+                    handleChange={this.handleChange}
+                    handleNewUser={this.handleNewUser}
+                    handleUserSubmit={this.handleUserSubmit}
+                    value={this.state.value}
+                  />
                 )}
               />
+              <Route path="/cart" render={() => <Cart />} />
               <Route
                 path="/"
                 render={props => (
                   <div className="App">
                     {props.children}
-                    <Navbar
-                      favorite={this.state.favorite}
-                      added={this.state.added}
-                      user={this.state.user}
-                    />
+                    <Navbar />
                     <Search />
                     <div className="mt-0 mx-lg-5">
                       <Route
                         exact
                         path="/"
-                        render={routerProps => (
+                        render={() => (
                           <div className="home mb-4">
                             <Featured />
-                            <Favorites
-                              {...props}
-                              favorite={this.state.favorite}
-                              added={this.state.added}
-                              addToFavorites={this.addToFavorites}
-                              product={this.state.product}
-                              store={this.state.store}
-                              test={this.state.test}
-                            />
+                            <Favorites />
                             <Blog />
                           </div>
                         )}

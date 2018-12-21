@@ -1,7 +1,4 @@
-import React, { Component } from "react";
-
-import PropTypes from "prop-types";
-import { DataContext } from "../dataContext";
+import React from "react";
 import "../styles/App.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,61 +8,13 @@ import {
   faUnlock,
   faEnvelope
 } from "@fortawesome/pro-light-svg-icons";
-
 import { Link } from "react-router-dom";
 
-class Login extends Component {
-  static contextType = DataContext;
+class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      type: "input",
-      name: "",
-      email: "",
-      password: "",
-      loggedIn: false,
-      subscribed: false,
-      user: "registered",
-      value: ""
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    // this.handleuserSubmit = this.handleUserSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    // this.handleNewUser = this.handleNewUser.bind(this);
+    this.state = {};
   }
-
-  handleSubmit(e) {
-    this.context.router.history.push(`/`);
-    e.preventDefault();
-  }
-
-  // handleUserSubmit(e) {
-  //   this.context.router.history.push(`/`);
-  //   e.preventDefault();
-  // }
-
-  // handleNewUser(e) {
-  //   this.setState({
-  //     user: "registered",
-  //     loggedIn: true
-  //   });
-  // }
-
-  handleChange(e) {
-    const target = e.target;
-    const name = target.name;
-
-    this.setState({
-      [name]: e.target.value,
-      type: this.state.type === "password" ? "password" : "input"
-    });
-    e.preventDefault();
-    e.stopPropagation();
-  }
-
-  static contextTypes = {
-    router: PropTypes.object
-  };
 
   render() {
     return (
@@ -78,13 +27,13 @@ class Login extends Component {
             </Link>
           </span>
         </nav>
-        {this.state.user === "registered" && this.state.loggedIn === false ? (
+        {this.props.user === "registered" && this.props.loggedIn === false ? (
           <div className="login-form-wrapper">
             <div className="bg-white box-shadow box mx-auto my-5 p-5 login-form">
               <div className="login-header text-center">
                 <h4>Hello World!</h4>
               </div>
-              <form onSubmit={this.handleSubmit}>
+              <form onSubmit={this.handleLogin}>
                 <div className="form-group">
                   <label htmlFor="exampleInputEmail1">
                     <h6>Email</h6>
@@ -102,8 +51,8 @@ class Login extends Component {
                       placeholder="Email"
                       aria-label="Email"
                       aria-describedby="basic-addon1"
-                      value={this.state.email}
-                      onChange={this.handleChange}
+                      value={this.props.email}
+                      onChange={this.props.handleChange}
                     />
                   </div>
                 </div>
@@ -124,30 +73,30 @@ class Login extends Component {
                       placeholder="Password"
                       aria-label="Password"
                       aria-describedby="basic-addon1"
-                      value={this.state.password}
-                      onChange={this.handleChange}
+                      value={this.props.password}
+                      onChange={this.props.handleChange}
                     />
                     <div className="input-group-append">
-                      <button
-                        type="submit"
+                      <Link
+                        to="/"
                         className="btn btn-outline-primary"
-                        id="button-addon2"
+                        type="submit"
                       >
                         Log In
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
               </form>
             </div>
           </div>
-        ) : this.state.user === "" ? (
+        ) : this.props.user === "" ? (
           <div className="register-form-wrapper">
             <div className="bg-white box-shadow box mx-auto my-5 p-5 login-form">
               <div className="login-header text-center">
                 <h4>Hello World!</h4>
               </div>
-              <form onSubmit={this.handleUserSubmit}>
+              <form onSubmit={this.handleLogin}>
                 <div className="form-group">
                   <label htmlFor="exampleInputEmail3">
                     <h6>Name</h6>
@@ -165,8 +114,8 @@ class Login extends Component {
                       placeholder="Name"
                       aria-label="Name"
                       aria-describedby="basic-addon3"
-                      value={this.state.name}
-                      onChange={this.handleChange}
+                      value={this.props.name}
+                      onChange={this.props.handleChange}
                     />
                   </div>
                 </div>
@@ -187,8 +136,8 @@ class Login extends Component {
                       placeholder="Email"
                       aria-label="Email"
                       aria-describedby="basic-addon1"
-                      value={this.state.email}
-                      onChange={this.handleChange}
+                      value={this.props.email}
+                      onChange={this.props.handleChange}
                     />
                   </div>
                 </div>
@@ -209,18 +158,19 @@ class Login extends Component {
                       placeholder="Password"
                       aria-label="Password"
                       aria-describedby="basic-addon1"
-                      value={this.state.password}
-                      onChange={this.handleChange}
+                      value={this.props.password}
+                      onChange={this.props.handleChange}
                     />
                     <div className="input-group-append">
-                      <button
+                      <Link
+                        to="/"
                         type="submit"
                         className="btn btn-outline-primary"
                         id="button-addon2"
-                        onClick={this.handleNewUser}
+                        onClick={this.props.handleNewUser}
                       >
                         Register
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -231,8 +181,8 @@ class Login extends Component {
                       name="subscribe"
                       className="form-check-input"
                       id="exampleCheck1"
-                      checked={this.state.subscribe}
-                      onChange={this.handleChange}
+                      checked={this.props.subscribed}
+                      onChange={this.props.handleChange}
                     />
                     <label className="form-check-label" htmlFor="exampleCheck1">
                       <h6>Subscribe for more travel inspiration.</h6>
@@ -242,7 +192,9 @@ class Login extends Component {
               </form>
             </div>
           </div>
-        ) : null}
+        ) : (
+          <div>Log Out</div>
+        )}
       </div>
     );
   }

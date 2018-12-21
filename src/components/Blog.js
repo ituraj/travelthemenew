@@ -27,7 +27,7 @@ class Blog extends Component {
                 </div>
                 <div className="row blog-image-wrapper">
                   <img
-                    // src={require(`images/${blog.image}`)}
+                    src={require(`images/${blog.image}`)}
                     alt="test"
                     className="col-12 blog-image"
                   />
@@ -73,7 +73,7 @@ class Blog extends Component {
               </div>
               <div className="row blog-image-wrapper">
                 <img
-                  // src={require(`images/${blog.image}`)}
+                  src={require(`images/${blog.image}`)}
                   alt="test"
                   className="col-12 blog-image"
                 />

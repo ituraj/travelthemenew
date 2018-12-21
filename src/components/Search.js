@@ -185,7 +185,7 @@ class Search extends Component {
                     <div className="card mx-auto h-100">
                       <img
                         className="card-img-top"
-                        // src={require(`images/${product.main_image}`)}
+                        src={require(`images/${product.main_image}`)}
                         alt="Card cap"
                       />
                       <div className="card-body">

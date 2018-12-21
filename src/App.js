@@ -87,7 +87,7 @@ class App extends Component {
         <DataContext.Provider value={this.state.dataContext}>
           <Router>
             <Switch>
-              <Redirect from="/traveltheme" to="/" />
+              <Redirect from="/traveltheme" to="/enjoy" />
               <Route exact path="/login" render={() => <Login />} />
               <Route
                 path="/cart"

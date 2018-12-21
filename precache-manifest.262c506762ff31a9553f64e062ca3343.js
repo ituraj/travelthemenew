@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "/traveltheme/static/media/faroe.632bbe5a.jpg"
   },
   {
-    "revision": "a09c329448514c55720c",
+    "revision": "b5b1abc228b76008a438",
     "url": "/traveltheme/static/css/main.9594507d.chunk.css"
   },
   {
-    "revision": "bf41ccbff472f6733491",
-    "url": "/traveltheme/static/js/1.bf41ccbf.chunk.js"
+    "revision": "198943979b77f063544c",
+    "url": "/traveltheme/static/js/1.19894397.chunk.js"
   },
   {
     "revision": "274a0ac47a6db187f65c",
@@ -72,8 +72,8 @@ self.__precacheManifest = [
     "url": "/traveltheme/static/media/egypt.76e89375.jpg"
   },
   {
-    "revision": "a09c329448514c55720c",
-    "url": "/traveltheme/static/js/main.a09c3294.chunk.js"
+    "revision": "b5b1abc228b76008a438",
+    "url": "/traveltheme/static/js/main.b5b1abc2.chunk.js"
   },
   {
     "revision": "db9c17f89fcd12b0fe24e3c8c3010855",
@@ -144,7 +144,7 @@ self.__precacheManifest = [
     "url": "/traveltheme/static/media/vietnam.1bc17393.jpg"
   },
   {
-    "revision": "a2997377380254bd877ce07c7d0bf3e5",
+    "revision": "2c4938719e4da79e45d3e29d2bd5647b",
     "url": "/traveltheme/index.html"
   }
 ];

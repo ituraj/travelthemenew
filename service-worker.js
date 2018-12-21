@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/traveltheme/precache-manifest.caad1f30e9abd56c61e7918d9ae73402.js"
+  "/traveltheme/precache-manifest.a4a3a9a364fc4050c740e35295fbece0.js"
 );
 
 workbox.clientsClaim();

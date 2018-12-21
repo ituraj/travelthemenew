@@ -1,7 +1,7 @@
 {
   "main.css": "/traveltheme/static/css/main.93f7ef21.chunk.css",
-  "main.js": "/traveltheme/static/js/main.75c1a8b6.chunk.js",
-  "main.js.map": "/traveltheme/static/js/main.75c1a8b6.chunk.js.map",
+  "main.js": "/traveltheme/static/js/main.61b8ca92.chunk.js",
+  "main.js.map": "/traveltheme/static/js/main.61b8ca92.chunk.js.map",
   "static/js/1.8c80654f.chunk.js": "/traveltheme/static/js/1.8c80654f.chunk.js",
   "static/js/1.8c80654f.chunk.js.map": "/traveltheme/static/js/1.8c80654f.chunk.js.map",
   "runtime~main.js": "/traveltheme/static/js/runtime~main.274a0ac4.js",
@@ -11,6 +11,6 @@
   "static/media/contact.jpg": "/traveltheme/static/media/contact.5c8342f4.jpg",
   "static/media/africa7.jpg": "/traveltheme/static/media/africa7.29a1ffe2.jpg",
   "index.html": "/traveltheme/index.html",
-  "precache-manifest.fcb198e86002cd1f9d84313750630587.js": "/traveltheme/precache-manifest.fcb198e86002cd1f9d84313750630587.js",
+  "precache-manifest.e4b2d6cb15296b1f549e6f3fcafc989a.js": "/traveltheme/precache-manifest.e4b2d6cb15296b1f549e6f3fcafc989a.js",
   "service-worker.js": "/traveltheme/service-worker.js"
 }

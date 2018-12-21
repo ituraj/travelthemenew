@@ -16,19 +16,19 @@ self.__precacheManifest = [
     "url": "/traveltheme/static/js/runtime~main.274a0ac4.js"
   },
   {
-    "revision": "75c1a8b673dd87b1ddca",
-    "url": "/traveltheme/static/js/main.75c1a8b6.chunk.js"
+    "revision": "61b8ca927b1cf64c21fe",
+    "url": "/traveltheme/static/js/main.61b8ca92.chunk.js"
   },
   {
     "revision": "8c80654fa67bb790706b",
     "url": "/traveltheme/static/js/1.8c80654f.chunk.js"
   },
   {
-    "revision": "75c1a8b673dd87b1ddca",
+    "revision": "61b8ca927b1cf64c21fe",
     "url": "/traveltheme/static/css/main.93f7ef21.chunk.css"
   },
   {
-    "revision": "58f31fad7c642c6d5dcd5df894fe2d17",
+    "revision": "6268c056d67df3e5e900dd7dd66c44c5",
     "url": "/traveltheme/index.html"
   }
 ];

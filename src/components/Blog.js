@@ -45,7 +45,7 @@ class Blog extends Component {
                     </div>
                     <div className="row mx-0">
                       <Link
-                        to="/blog"
+                        to="/post"
                         className="text-dark d-flex align-items-center"
                       >
                         <span>Read more</span>
@@ -91,7 +91,7 @@ class Blog extends Component {
                   </div>
                   <div className="row mx-0">
                     <Link
-                      to="/blog"
+                      to="/post"
                       className="text-dark d-flex align-items-center"
                     >
                       <span>Read more</span>

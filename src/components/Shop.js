@@ -43,11 +43,22 @@ class Shop extends Component {
 
   render() {
     const width = window.innerWidth;
+    const data = this.context.data.product;
+    const recommended = data.filter(
+      object => object.category === "recommended"
+    );
+    const continent = data.filter(
+      object =>
+        object.continent === "Africa" && object.category !== "recommended"
+    );
+    const season = data.filter(
+      object => object.season === "spring" && object.category !== "recommended"
+    );
     return (
       <div className="shop mx-lg-4 mx-1">
         <div className="row mx-auto justify-content-between align-items-center">
           <h4 className="ml-3 my-3">Recommended for you:</h4>
-          {this.context.data.featured.length > 4 ? (
+          {recommended.length > 4 ? (
             <button
               className="btn btn-outline-primary mr-3"
               onClick={this.toggleCollapseOne}
@@ -62,7 +73,7 @@ class Shop extends Component {
               width < 1008 ? "row mx-auto scrolling-wrapper" : "row mx-auto"
             }
           >
-            {this.context.data.featured
+            {recommended
               .map((product, id) => (
                 <div
                   className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 my-4"
@@ -77,7 +88,10 @@ class Shop extends Component {
                     <div className="card-body">
                       <span className="row mx-auto justify-content-between">
                         <h5 className="card-title">
-                          <Link to="/product" className="product-link">
+                          <Link
+                            to={`/product/${product.id}`}
+                            className="product-link"
+                          >
                             {product.title}
                           </Link>
                         </h5>
@@ -93,7 +107,7 @@ class Shop extends Component {
                     <div className="row d-flex justify-content-between align-items-center py-2 px-4">
                       <div className="col-8">
                         <Link
-                          to="/product"
+                          to={`/product/${product.id}`}
                           className="text-dark d-flex align-items-center explore-link"
                         >
                           <span className="pr-0 pl-0">Explore</span>
@@ -152,7 +166,7 @@ class Shop extends Component {
               width < 1008 ? "row mx-auto scrolling-wrapper" : "row mx-auto"
             }
           >
-            {this.context.data.featured
+            {recommended
               .map((product, id) => (
                 <div
                   className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 my-4"
@@ -167,7 +181,10 @@ class Shop extends Component {
                     <div className="card-body">
                       <span className="row mx-auto justify-content-between">
                         <h5 className="card-title">
-                          <Link to="/product" className="product-link">
+                          <Link
+                            to={`/product/${product.id}`}
+                            className="product-link"
+                          >
                             {product.title}
                           </Link>
                         </h5>
@@ -183,7 +200,7 @@ class Shop extends Component {
                     <div className="row d-flex justify-content-between align-items-center py-2 px-4">
                       <div className="col-8">
                         <Link
-                          to="/product"
+                          to={`/product/${product.id}`}
                           className="text-dark d-flex align-items-center explore-link"
                         >
                           <span className="pr-0 pl-0">Explore</span>
@@ -233,18 +250,13 @@ class Shop extends Component {
                   </div>
                 </div>
               ))
-              .slice(
-                4,
-                this.context.data.featured.indexOf(
-                  this.context.data.featured.length
-                )
-              )}
+              .slice(4, recommended.indexOf(recommended.length))}
           </div>
         </Collapse>
 
         <div className="row mx-auto justify-content-between align-items-center">
           <h4 className="ml-3 my-3">Destination: Africa</h4>
-          {this.context.data.africa.length > 4 ? (
+          {continent.length > 4 ? (
             <button
               className="btn btn-outline-primary mr-3"
               onClick={this.toggleCollapseTwo}
@@ -260,7 +272,7 @@ class Shop extends Component {
               width < 1008 ? "row mx-auto scrolling-wrapper" : "row mx-auto"
             }
           >
-            {this.context.data.africa
+            {continent
               .map((product, id) => (
                 <div
                   className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 my-4"
@@ -269,13 +281,16 @@ class Shop extends Component {
                   <div className="card mx-auto h-100">
                     <img
                       className="card-img-top"
-                      src={require(`images/africa/${product.main_image}`)}
+                      src={require(`images/${product.main_image}`)}
                       alt="Card cap"
                     />
                     <div className="card-body">
                       <span className="row mx-auto justify-content-between">
                         <h5 className="card-title">
-                          <Link to="/product" className="product-link">
+                          <Link
+                            to={`/product/${product.id}`}
+                            className="product-link"
+                          >
                             {product.title}
                           </Link>
                         </h5>
@@ -291,7 +306,7 @@ class Shop extends Component {
                     <div className="row d-flex justify-content-between align-items-center py-2 px-4">
                       <div className="col-8">
                         <Link
-                          to="/product"
+                          to={`/product/${product.id}`}
                           className="text-dark d-flex align-items-center explore-link"
                         >
                           <span className="pr-0 pl-0">Explore</span>
@@ -350,7 +365,7 @@ class Shop extends Component {
               width < 1008 ? "row mx-auto scrolling-wrapper" : "row mx-auto"
             }
           >
-            {this.context.data.africa
+            {continent
               .map((product, id) => (
                 <div
                   className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 my-4"
@@ -359,13 +374,16 @@ class Shop extends Component {
                   <div className="card mx-auto h-100">
                     <img
                       className="card-img-top"
-                      src={require(`images/africa/${product.main_image}`)}
+                      src={require(`images/${product.main_image}`)}
                       alt="Card cap"
                     />
                     <div className="card-body">
                       <span className="row mx-auto justify-content-between">
                         <h5 className="card-title">
-                          <Link to="/product" className="product-link">
+                          <Link
+                            to={`/product/${product.id}`}
+                            className="product-link"
+                          >
                             {product.title}
                           </Link>
                         </h5>
@@ -381,7 +399,7 @@ class Shop extends Component {
                     <div className="row d-flex justify-content-between align-items-center py-2 px-4">
                       <div className="col-8">
                         <Link
-                          to="/product"
+                          to={`/product/${product.id}`}
                           className="text-dark d-flex align-items-center explore-link"
                         >
                           <span className="pr-0 pl-0">Explore</span>
@@ -431,19 +449,14 @@ class Shop extends Component {
                   </div>
                 </div>
               ))
-              .slice(
-                4,
-                this.context.data.africa.indexOf(
-                  this.context.data.africa.length
-                )
-              )}
+              .slice(4, continent.indexOf(continent.length))}
           </div>
         </Collapse>
         <div className="row mx-auto justify-content-between align-items-center">
           <h4 className="ml-3 my-3">
             Next season: <span>Spring</span>
           </h4>
-          {this.context.data.featured.length > 4 ? (
+          {season.length > 4 ? (
             <button
               className="btn btn-outline-primary mr-3"
               onClick={this.toggleCollapseThree}
@@ -459,7 +472,7 @@ class Shop extends Component {
               width < 1008 ? "row mx-auto scrolling-wrapper" : "row mx-auto"
             }
           >
-            {this.context.data.spring
+            {season
               .map((product, id) => (
                 <div
                   className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 my-4"
@@ -474,7 +487,10 @@ class Shop extends Component {
                     <div className="card-body">
                       <span className="row mx-auto justify-content-between">
                         <h5 className="card-title">
-                          <Link to="/product" className="product-link">
+                          <Link
+                            to={`/product/${product.id}`}
+                            className="product-link"
+                          >
                             {product.title}
                           </Link>
                         </h5>
@@ -490,7 +506,7 @@ class Shop extends Component {
                     <div className="row d-flex justify-content-between align-items-center py-2 px-4">
                       <div className="col-8">
                         <Link
-                          to="/product"
+                          to={`/product/${product.id}`}
                           className="text-dark d-flex align-items-center explore-link"
                         >
                           <span className="pr-0 pl-0">Explore</span>
@@ -549,7 +565,7 @@ class Shop extends Component {
               width < 1008 ? "row mx-auto scrolling-wrapper" : "row mx-auto"
             }
           >
-            {this.context.data.spring
+            {season
               .map((product, id) => (
                 <div
                   className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 my-4"
@@ -564,7 +580,10 @@ class Shop extends Component {
                     <div className="card-body">
                       <span className="row mx-auto justify-content-between">
                         <h5 className="card-title">
-                          <Link to="/product" className="product-link">
+                          <Link
+                            to={`/product/${product.id}`}
+                            className="product-link"
+                          >
                             {product.title}
                           </Link>
                         </h5>
@@ -580,7 +599,7 @@ class Shop extends Component {
                     <div className="row d-flex justify-content-between align-items-center py-2 px-4">
                       <div className="col-8">
                         <Link
-                          to="/product"
+                          to={`/product/${product.id}`}
                           className="text-dark d-flex align-items-center explore-link"
                         >
                           <span className="pr-0 pl-0">Explore</span>
@@ -630,12 +649,7 @@ class Shop extends Component {
                   </div>
                 </div>
               ))
-              .slice(
-                4,
-                this.context.data.spring.indexOf(
-                  this.context.data.spring.length
-                )
-              )}
+              .slice(4, season.indexOf(season.length))}
           </div>
         </Collapse>
       </div>

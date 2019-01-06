@@ -15,6 +15,7 @@ import Shop from "./components/Shop";
 import Product from "./components/Product";
 import Contact from "./components/Contact";
 import Blog from "./components/Blog";
+import Post from "./components/Post";
 import Cart from "./components/Cart";
 import Login from "./components/Login";
 import Featured from "./components/Featured";
@@ -166,6 +167,7 @@ class App extends Component {
                       />
                       <Route path="/contact" render={() => <Contact />} />
                       <Route path="/blog" render={() => <Blog />} />
+                      <Route path="/post" render={() => <Post />} />
                       <Route path="/favorites" render={() => <Favorites />} />
                     </div>
                     <Footer />

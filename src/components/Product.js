@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import "../styles/App.scss";
 import { DataContext } from "../dataContext";
 
-import productImage from "./../images/africa/africa7.jpg";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart, faHeart } from "@fortawesome/pro-light-svg-icons";
 
@@ -12,47 +10,71 @@ class Product extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      open: "one"
+    };
+    this.handleThumbOne = this.handleThumbOne.bind(this);
+    this.handleThumbTwo = this.handleThumbTwo.bind(this);
+    this.handleThumbThree = this.handleThumbThree.bind(this);
+  }
+
+  handleThumbOne() {
+    this.setState({ open: "one" });
+  }
+  handleThumbTwo() {
+    this.setState({ open: "two" });
+  }
+  handleThumbThree() {
+    this.setState({ open: "three" });
   }
 
   render() {
-    const n = 0;
-    // const url = window.location.pathname.split("/").slice(-1)[0];
+    const url = window.location.pathname.split("/").slice(-1)[0];
     return (
       <div className="product mx-lg-4 mx-1">
         {
-          this.context.data.featured.map((product, id) => (
+          this.context.data.product.map((product, id) => (
             <div className="row mx-auto mb-5 h-100" key={id}>
               <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div className="row">
-                  <div className="col-9">
+                  <div className="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
                     <img
+                      id="thumb"
                       className="product-image"
-                      src={require(`images/thumbnails/${product.thumb_one}`)}
+                      src={
+                        this.state.open === "one"
+                          ? require(`images/thumbnails/${product.thumb_one}`)
+                          : this.state.open === "two"
+                          ? require(`images/thumbnails/${product.thumb_two}`)
+                          : require(`images/thumbnails/${product.thumb_three}`)
+                      }
                       alt="contact"
                     />
                   </div>
                 </div>
-                <div className="row pt-3">
-                  <div className="col-3 pr-0">
+                <div className="row py-0 pt-3">
+                  <div className="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-4">
                     <img
                       className="thumb-image"
-                      src={productImage}
+                      src={require(`images/thumbnails/${product.thumb_one}`)}
                       alt="contact"
+                      onClick={this.handleThumbOne}
                     />
                   </div>
-                  <div className="col-3 px-0">
+                  <div className="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-4">
                     <img
                       className="thumb-image"
-                      src={productImage}
+                      src={require(`images/thumbnails/${product.thumb_two}`)}
                       alt="contact"
+                      onClick={this.handleThumbTwo}
                     />
                   </div>
-                  <div className="col-3 pl-0">
+                  <div className="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-4">
                     <img
                       className="thumb-image"
-                      src={productImage}
+                      src={require(`images/thumbnails/${product.thumb_three}`)}
                       alt="contact"
+                      onClick={this.handleThumbThree}
                     />
                   </div>
                 </div>
@@ -119,7 +141,7 @@ class Product extends Component {
                 </div>
               </div>
             </div>
-          ))[n]
+          ))[url - 1]
         }
       </div>
     );

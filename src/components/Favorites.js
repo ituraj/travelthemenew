@@ -19,6 +19,10 @@ class Favorites extends Component {
   }
 
   render() {
+    const data = this.context.data.product;
+    const recommended = data.filter(
+      object => object.category === "recommended"
+    );
     return (
       <div className="favorites mx-lg-4 mx-1">
         <div className="row mx-auto justify-content-between align-items-center">
@@ -31,7 +35,7 @@ class Favorites extends Component {
           </Link>
         </div>
         <div className="row mx-auto scrolling-wrapper">
-          {this.context.data.featured
+          {recommended
             .map((product, id) => (
               <div
                 className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 my-4"
@@ -62,7 +66,7 @@ class Favorites extends Component {
                   <div className="row d-flex justify-content-between align-items-center py-2 px-4">
                     <div className="col-8">
                       <Link
-                        to="/product"
+                        to={`/product/${product.id}`}
                         className="text-dark d-flex align-items-center explore-link"
                       >
                         <span className="pr-0 pl-0">Explore</span>

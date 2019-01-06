@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../styles/App.scss";
-import json from "../assets/data.json";
 import { DataContext } from "../dataContext";
 
 import { Link } from "react-router-dom";
@@ -12,17 +11,13 @@ class Favorites extends Component {
   static contextType = DataContext;
   constructor(props) {
     super(props);
-    this.state = {
-      store: json.store,
-      product: json.featured,
-      categories: json.categories
-    };
+    this.state = {};
   }
 
   render() {
     return (
       <div className="featured mx-lg-4 mx-1">
-        {this.context.data.featured.map((product, id) => (
+        {this.context.data.product.map((product, id) => (
           <div key={id}>
             {product.featured && product.created_at === "January" ? (
               <div>
@@ -49,7 +44,7 @@ class Favorites extends Component {
 
                     <p>{product.description}</p>
                     <Link
-                      to="/product"
+                      to={`/product/${product.id}`}
                       className="text-dark d-flex align-items-center explore-link"
                     >
                       <span>Explore</span>

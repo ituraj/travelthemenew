@@ -78,7 +78,7 @@ class Cart extends Component {
   }
 
   render() {
-    var featured = this.context.data.featured;
+    var product = this.context.data.product;
     return (
       <div className="cart">
         <nav className="navbar navbar-light bg-white mt-0">
@@ -126,7 +126,7 @@ class Cart extends Component {
                 </Link>
               </div>
               <div className="row mx-auto scrolling-wrapper">
-                {this.context.data.featured
+                {this.context.data.product
                   .map((product, id) => (
                     <div
                       className="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 mt-4"
@@ -402,21 +402,21 @@ class Cart extends Component {
                   <div className="card mx-auto">
                     <img
                       className="card-img-top card-in-cart"
-                      src={require(`images/${featured[0].main_image}`)}
+                      src={require(`images/${product[0].main_image}`)}
                       alt="Card cap"
                     />
                     <div className="card-body">
                       <span className="row mx-auto justify-content-between">
                         <h5 className="card-title">
-                          {this.context.data.featured[0].title}
+                          {this.context.data.product[0].title}
                         </h5>
                         <h6 className="text-primary font-weight-bold">
                           {this.context.data.store.currency +
-                            this.context.data.featured[0].price}
+                            this.context.data.product[0].price}
                         </h6>
                       </span>
                       <h6 className="card-subtitle mb-2 text-muted">
-                        {this.context.data.featured[0].town}
+                        {this.context.data.product[0].town}
                       </h6>
                     </div>
                   </div>
@@ -424,7 +424,7 @@ class Cart extends Component {
                 <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 px-5 mb-5">
                   <div className="row mx-auto">
                     <h6>
-                      Product: <span>{this.context.data.featured[0].name}</span>
+                      Product: <span>{this.context.data.product[0].name}</span>
                     </h6>
                   </div>
                   <div className="row mx-auto">
@@ -432,7 +432,7 @@ class Cart extends Component {
                       Price:{" "}
                       <span>
                         {this.context.data.store.currency +
-                          this.context.data.featured[0].price}
+                          this.context.data.product[0].price}
                       </span>
                     </h6>
                   </div>
@@ -441,7 +441,7 @@ class Cart extends Component {
                       Total:{" "}
                       <span>
                         {this.context.data.store.currency +
-                          this.context.data.featured[0].price}
+                          this.context.data.product[0].price}
                       </span>
                     </h6>
                   </div>

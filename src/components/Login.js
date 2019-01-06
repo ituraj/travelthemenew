@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/App.scss";
+import PropTypes from "prop-types";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,6 +12,10 @@ import {
 import { Link } from "react-router-dom";
 
 class Login extends React.Component {
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
   constructor(props) {
     super(props);
     this.state = {};
@@ -81,6 +86,7 @@ class Login extends React.Component {
                         to="/"
                         className="btn btn-outline-primary"
                         type="submit"
+                        onClick={this.props.handleLoggedInUser}
                       >
                         Log In
                       </Link>
@@ -192,9 +198,7 @@ class Login extends React.Component {
               </form>
             </div>
           </div>
-        ) : (
-          <div>Log Out</div>
-        )}
+        ) : null}
       </div>
     );
   }

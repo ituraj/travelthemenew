@@ -50,7 +50,9 @@ class App extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleNewUser = this.handleNewUser.bind(this);
-    this.handleUserSubmit = this.handleUserSubmit.bind(this);
+    this.handleLoggedInUser = this.handleLoggedInUser.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleLogOut = this.handleLogOut.bind(this);
   }
 
   componentWillMount() {
@@ -78,15 +80,29 @@ class App extends Component {
     e.stopPropagation();
   }
 
-  handleUserSubmit(e) {
-    this.props.history.push(`/`);
+  handleSubmit(e) {
+    this.router.history.push(`/`);
     e.preventDefault();
   }
 
-  handleNewUser(e) {
+  handleNewUser() {
     this.setState({
       user: "registered",
       loggedIn: true
+    });
+  }
+
+  handleLoggedInUser() {
+    this.setState({
+      user: "loggedin",
+      loggedIn: true
+    });
+  }
+
+  handleLogOut(e) {
+    alert("You have successfully logged out. See you soon!");
+    this.setState({
+      loggedIn: false
     });
   }
 
@@ -113,7 +129,8 @@ class App extends Component {
                     user={this.state.user}
                     handleChange={this.handleChange}
                     handleNewUser={this.handleNewUser}
-                    handleUserSubmit={this.handleUserSubmit}
+                    handleLoggedInUser={this.handleLoggedInUser}
+                    handleSubmit={this.handleSubmit}
                     value={this.state.value}
                   />
                 )}
@@ -124,7 +141,10 @@ class App extends Component {
                 render={props => (
                   <div className="App">
                     {props.children}
-                    <Navbar />
+                    <Navbar
+                      loggedIn={this.state.loggedIn}
+                      handleLogOut={this.handleLogOut}
+                    />
                     <Search />
                     <div className="mt-0 mx-lg-5">
                       <Route
@@ -139,7 +159,11 @@ class App extends Component {
                         )}
                       />
                       <Route path="/shop" render={() => <Shop />} />
-                      <Route path="/product" render={() => <Product />} />
+                      <Route exact path="/product" render={() => <Product />} />
+                      <Route
+                        path="/product/:id"
+                        render={props => <Product {...props} />}
+                      />
                       <Route path="/contact" render={() => <Contact />} />
                       <Route path="/blog" render={() => <Blog />} />
                       <Route path="/favorites" render={() => <Favorites />} />

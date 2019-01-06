@@ -19,6 +19,7 @@ class Shop extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: "",
       openOne: false,
       openTwo: false,
       openThree: false
@@ -75,7 +76,11 @@ class Shop extends Component {
                     />
                     <div className="card-body">
                       <span className="row mx-auto justify-content-between">
-                        <h5 className="card-title">{product.title}</h5>
+                        <h5 className="card-title">
+                          <Link to="/product" className="product-link">
+                            {product.title}
+                          </Link>
+                        </h5>
                         <h5 className="text-primary font-weight-bold">
                           {this.context.data.store.currency + product.price}
                         </h5>
@@ -89,7 +94,7 @@ class Shop extends Component {
                       <div className="col-8">
                         <Link
                           to="/product"
-                          className="text-dark d-flex align-items-center"
+                          className="text-dark d-flex align-items-center explore-link"
                         >
                           <span className="pr-0 pl-0">Explore</span>
                           <FontAwesomeIcon
@@ -161,7 +166,11 @@ class Shop extends Component {
                     />
                     <div className="card-body">
                       <span className="row mx-auto justify-content-between">
-                        <h5 className="card-title">{product.title}</h5>
+                        <h5 className="card-title">
+                          <Link to="/product" className="product-link">
+                            {product.title}
+                          </Link>
+                        </h5>
                         <h5 className="text-primary font-weight-bold">
                           {this.context.data.store.currency + product.price}
                         </h5>
@@ -175,7 +184,7 @@ class Shop extends Component {
                       <div className="col-8">
                         <Link
                           to="/product"
-                          className="text-dark d-flex align-items-center"
+                          className="text-dark d-flex align-items-center explore-link"
                         >
                           <span className="pr-0 pl-0">Explore</span>
                           <FontAwesomeIcon
@@ -265,7 +274,11 @@ class Shop extends Component {
                     />
                     <div className="card-body">
                       <span className="row mx-auto justify-content-between">
-                        <h5 className="card-title">{product.title}</h5>
+                        <h5 className="card-title">
+                          <Link to="/product" className="product-link">
+                            {product.title}
+                          </Link>
+                        </h5>
                         <h5 className="text-primary font-weight-bold">
                           {this.context.data.store.currency + product.price}
                         </h5>
@@ -279,7 +292,7 @@ class Shop extends Component {
                       <div className="col-8">
                         <Link
                           to="/product"
-                          className="text-dark d-flex align-items-center"
+                          className="text-dark d-flex align-items-center explore-link"
                         >
                           <span className="pr-0 pl-0">Explore</span>
                           <FontAwesomeIcon
@@ -351,7 +364,11 @@ class Shop extends Component {
                     />
                     <div className="card-body">
                       <span className="row mx-auto justify-content-between">
-                        <h5 className="card-title">{product.title}</h5>
+                        <h5 className="card-title">
+                          <Link to="/product" className="product-link">
+                            {product.title}
+                          </Link>
+                        </h5>
                         <h5 className="text-primary font-weight-bold">
                           {this.context.data.store.currency + product.price}
                         </h5>
@@ -365,7 +382,7 @@ class Shop extends Component {
                       <div className="col-8">
                         <Link
                           to="/product"
-                          className="text-dark d-flex align-items-center"
+                          className="text-dark d-flex align-items-center explore-link"
                         >
                           <span className="pr-0 pl-0">Explore</span>
                           <FontAwesomeIcon
@@ -423,7 +440,9 @@ class Shop extends Component {
           </div>
         </Collapse>
         <div className="row mx-auto justify-content-between align-items-center">
-          <h4 className="ml-3 my-3">Next season:</h4>
+          <h4 className="ml-3 my-3">
+            Next season: <span>Spring</span>
+          </h4>
           {this.context.data.featured.length > 4 ? (
             <button
               className="btn btn-outline-primary mr-3"
@@ -449,12 +468,16 @@ class Shop extends Component {
                   <div className="card mx-auto h-100">
                     <img
                       className="card-img-top"
-                      src={require(`images/spring/${product.main_image}`)}
+                      src={require(`images/${product.main_image}`)}
                       alt="Card cap"
                     />
                     <div className="card-body">
                       <span className="row mx-auto justify-content-between">
-                        <h5 className="card-title">{product.title}</h5>
+                        <h5 className="card-title">
+                          <Link to="/product" className="product-link">
+                            {product.title}
+                          </Link>
+                        </h5>
                         <h5 className="text-primary font-weight-bold">
                           {this.context.data.store.currency + product.price}
                         </h5>
@@ -468,7 +491,7 @@ class Shop extends Component {
                       <div className="col-8">
                         <Link
                           to="/product"
-                          className="text-dark d-flex align-items-center"
+                          className="text-dark d-flex align-items-center explore-link"
                         >
                           <span className="pr-0 pl-0">Explore</span>
                           <FontAwesomeIcon
@@ -535,12 +558,16 @@ class Shop extends Component {
                   <div className="card mx-auto h-100">
                     <img
                       className="card-img-top"
-                      src={require(`images/spring/${product.main_image}`)}
+                      src={require(`images/${product.main_image}`)}
                       alt="Card cap"
                     />
                     <div className="card-body">
                       <span className="row mx-auto justify-content-between">
-                        <h5 className="card-title">{product.title}</h5>
+                        <h5 className="card-title">
+                          <Link to="/product" className="product-link">
+                            {product.title}
+                          </Link>
+                        </h5>
                         <h5 className="text-primary font-weight-bold">
                           {this.context.data.store.currency + product.price}
                         </h5>
@@ -554,7 +581,7 @@ class Shop extends Component {
                       <div className="col-8">
                         <Link
                           to="/product"
-                          className="text-dark d-flex align-items-center"
+                          className="text-dark d-flex align-items-center explore-link"
                         >
                           <span className="pr-0 pl-0">Explore</span>
                           <FontAwesomeIcon

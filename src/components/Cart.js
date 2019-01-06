@@ -140,7 +140,11 @@ class Cart extends Component {
                         />
                         <div className="card-body">
                           <span className="row mx-auto justify-content-between">
-                            <h5 className="card-title">{product.title}</h5>
+                            <h5 className="card-title">
+                              <Link to="/product" className="product-link">
+                                {product.title}
+                              </Link>
+                            </h5>
                             <h6 className="text-primary font-weight-bold">
                               {this.context.data.store.currency + product.price}
                             </h6>
@@ -153,7 +157,7 @@ class Cart extends Component {
                           <div className="col-8">
                             <Link
                               to="/product"
-                              className="text-dark d-flex align-items-center"
+                              className="text-dark d-flex align-items-center explore-link"
                             >
                               <span className="pr-0 pl-0">Explore</span>
                               <FontAwesomeIcon

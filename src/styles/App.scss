@@ -3,6 +3,7 @@
 img {
   width: 100%;
   height: auto;
+  min-height: 260px;
 }
 
 h1,
@@ -131,4 +132,12 @@ footer {
 
 .btn-outline-primary:hover {
   color: #fff !important;
+}
+
+.product-link:hover {
+  text-decoration: none;
+}
+
+.explore-link:hover {
+  text-decoration: none;
 }

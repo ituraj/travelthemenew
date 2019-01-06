@@ -25,7 +25,7 @@ class Blog extends Component {
                 <div className="row">
                   <h4 className="col-12 my-3">{blog.title}</h4>
                 </div>
-                <div className="row blog-image-wrapper">
+                <div className="row blog-image-wrapper my-4">
                   <img
                     src={require(`images/${blog.image}`)}
                     alt="test"

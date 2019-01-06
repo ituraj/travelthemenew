@@ -9,8 +9,13 @@ import {
 } from "@fortawesome/pro-light-svg-icons";
 // import { Collapse } from "react-collapse";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class Navbar extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -49,13 +54,20 @@ class Navbar extends Component {
                 </Link>
               </div>
               <div className="navbar-nav">
-                <Link to="/login" className="nav-item nav-link text-dark">
-                  {this.props.user === "registered" ? (
-                    <span>Log Out</span>
-                  ) : (
-                    <span>Log In</span>
-                  )}
-                </Link>
+                {this.props.loggedIn === true ? (
+                  <Link
+                    to={this.context.router.history.goBack}
+                    onClick={this.props.handleLogOut}
+                    className="nav-item nav-link text-dark"
+                  >
+                    Log Out
+                  </Link>
+                ) : (
+                  <Link to="/login" className="nav-item nav-link text-dark">
+                    <span>Log In | Register</span>
+                  </Link>
+                )}
+
                 <Link to="/cart" className="nav-item nav-link text-dark">
                   <FontAwesomeIcon
                     icon={faShoppingCart}

@@ -14,6 +14,13 @@ class Contact extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(e) {
+    alert("Thank you for contacting us. We will answer as soon as possible.");
+
+    e.preventDefault();
   }
 
   render() {
@@ -27,12 +34,19 @@ class Contact extends Component {
           <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 py-5 px-5">
             <div className="row mx-auto my-5 justify-content-around">
               <span className="text-center">
-                <FontAwesomeIcon
-                  icon={faLocationArrow}
-                  size="2x"
-                  className="text-primary"
-                />
-                <h6 className="py-2 text-primary">Find Us</h6>
+                <a
+                  href="https://goo.gl/maps/621K24ZppcM2"
+                  className="text-center"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon
+                    icon={faLocationArrow}
+                    size="2x"
+                    className="text-primary"
+                  />
+                  <h6 className="py-2 text-primary">Find Us</h6>
+                </a>
               </span>
               <a href="tel:+45-444-444-444" className="text-center">
                 <FontAwesomeIcon

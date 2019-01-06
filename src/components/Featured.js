@@ -39,14 +39,18 @@ class Favorites extends Component {
                   </div>
                   <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 my-4">
                     <span>
-                      <h1 className="my-0">{product.title}</h1>
+                      <h1 className="my-0">
+                        <Link to="/product" className="product-link">
+                          {product.title}
+                        </Link>
+                      </h1>
                       <h6 className="mb-4 text-muted">{product.country}</h6>
                     </span>
 
                     <p>{product.description}</p>
                     <Link
                       to="/product"
-                      className="text-dark d-flex align-items-center"
+                      className="text-dark d-flex align-items-center explore-link"
                     >
                       <span>Explore</span>
                       <FontAwesomeIcon

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/enjoy/precache-manifest.6c8ecfbd0c450572f1bdbb4692eb4e09.js"
+  "/travelthemenew/precache-manifest.3e59fe51b84338711ad0cddc1293bb4a.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/enjoy/index.html", {
+workbox.routing.registerNavigationRoute("/travelthemenew/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });

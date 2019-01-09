@@ -1,7 +1,7 @@
 {
   "main.css": "/travelthemenew/static/css/main.b2ce59e8.chunk.css",
-  "main.js": "/travelthemenew/static/js/main.ba182d9d.chunk.js",
-  "main.js.map": "/travelthemenew/static/js/main.ba182d9d.chunk.js.map",
+  "main.js": "/travelthemenew/static/js/main.c51109e8.chunk.js",
+  "main.js.map": "/travelthemenew/static/js/main.c51109e8.chunk.js.map",
   "static/js/1.498ef13b.chunk.js": "/travelthemenew/static/js/1.498ef13b.chunk.js",
   "static/js/1.498ef13b.chunk.js.map": "/travelthemenew/static/js/1.498ef13b.chunk.js.map",
   "runtime~main.js": "/travelthemenew/static/js/runtime~main.a81fcfa9.js",
@@ -87,6 +87,6 @@
   "static/media/vietnam.jpg": "/travelthemenew/static/media/vietnam.1bc17393.jpg",
   "static/css/main.b2ce59e8.chunk.css.map": "/travelthemenew/static/css/main.b2ce59e8.chunk.css.map",
   "index.html": "/travelthemenew/index.html",
-  "precache-manifest.df254df065393f80a1350b82c22ddaae.js": "/travelthemenew/precache-manifest.df254df065393f80a1350b82c22ddaae.js",
+  "precache-manifest.a6ac70e34b583a63978cbcf893c1f381.js": "/travelthemenew/precache-manifest.a6ac70e34b583a63978cbcf893c1f381.js",
   "service-worker.js": "/travelthemenew/service-worker.js"
 }

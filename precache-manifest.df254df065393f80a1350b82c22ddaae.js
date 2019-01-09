@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/travelthemenew/static/media/surfing-th.6f43c1cc.jpg"
   },
   {
-    "revision": "9236378cdcb00d78138f",
-    "url": "/travelthemenew/static/css/main.1b3a3c9b.chunk.css"
+    "revision": "ba182d9d9448c0951d8c",
+    "url": "/travelthemenew/static/css/main.b2ce59e8.chunk.css"
   },
   {
     "revision": "498ef13bb1185a7220ee",
@@ -168,8 +168,8 @@ self.__precacheManifest = [
     "url": "/travelthemenew/static/media/spring1-th.d9f8ff99.jpg"
   },
   {
-    "revision": "9236378cdcb00d78138f",
-    "url": "/travelthemenew/static/js/main.9236378c.chunk.js"
+    "revision": "ba182d9d9448c0951d8c",
+    "url": "/travelthemenew/static/js/main.ba182d9d.chunk.js"
   },
   {
     "revision": "b2c9d79afd8dd1740dd3e62ebc2b9521",
@@ -332,7 +332,7 @@ self.__precacheManifest = [
     "url": "/travelthemenew/static/media/vietnam.1bc17393.jpg"
   },
   {
-    "revision": "880499fe00db32b5c2ead174e2d57d99",
+    "revision": "09b304c664697f52a500dcf1a3d791f7",
     "url": "/travelthemenew/index.html"
   }
 ];

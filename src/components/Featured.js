@@ -19,10 +19,10 @@ class Favorites extends Component {
       <div className="featured mx-lg-4 mx-1">
         {this.context.data.product.map((product, id) => (
           <div key={id}>
-            {product.featured && product.created_at === "January" ? (
+            {product.featured && product.created_at === "january" ? (
               <div>
                 <div className="row mx-auto">
-                  <h4 className="my-4 ml-3">Destination of the month:</h4>
+                  <h4 className="my-2 ml-3">Destination of the month:</h4>
                 </div>
                 <div className="row mx-auto">
                   <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 my-4">
@@ -35,7 +35,11 @@ class Favorites extends Component {
                   <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 my-4">
                     <span>
                       <h1 className="my-0">
-                        <Link to="/product" className="product-link">
+                        <Link
+                          to={`/product/${product.id}`}
+                          className="product-link"
+                          onClick={() => window.scrollTo(0, 0)}
+                        >
                           {product.title}
                         </Link>
                       </h1>
@@ -46,6 +50,7 @@ class Favorites extends Component {
                     <Link
                       to={`/product/${product.id}`}
                       className="text-dark d-flex align-items-center explore-link"
+                      onClick={() => window.scrollTo(0, 0)}
                     >
                       <span>Explore</span>
                       <FontAwesomeIcon

@@ -39,6 +39,8 @@ class App extends Component {
           }));
         }
       },
+      added: false,
+      favorite: false,
       fetching: false,
       type: "input",
       name: "",
@@ -46,8 +48,7 @@ class App extends Component {
       password: "",
       loggedIn: false,
       subscribed: false,
-      user: "",
-      value: ""
+      user: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleNewUser = this.handleNewUser.bind(this);
@@ -100,8 +101,7 @@ class App extends Component {
     });
   }
 
-  handleLogOut(e) {
-    alert("You have successfully logged out. See you soon!");
+  handleLogOut() {
     this.setState({
       loggedIn: false
     });
@@ -115,7 +115,7 @@ class App extends Component {
         <DataContext.Provider value={this.state.dataContext}>
           <Router>
             <Switch>
-              <Redirect from="/traveltheme" to="/" />
+              <Redirect from="/travelthemenew" to="/" />
               <Route
                 exact
                 path="/login"
@@ -168,7 +168,15 @@ class App extends Component {
                       <Route path="/contact" render={() => <Contact />} />
                       <Route path="/blog" render={() => <Blog />} />
                       <Route path="/post" render={() => <Post />} />
-                      <Route path="/favorites" render={() => <Favorites />} />
+                      <Route
+                        path="/favorites"
+                        render={() => (
+                          <Favorites
+                            handleShoppingCart={this.handleShoppingCart}
+                            handleFavorites={this.handleFavorites}
+                          />
+                        )}
+                      />
                     </div>
                     <Footer />
                   </div>

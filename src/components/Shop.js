@@ -41,6 +41,10 @@ class Shop extends Component {
     this.setState({ openThree: !this.state.openThree });
   }
 
+  addToFavorites() {
+    console.log("this should add to favorites");
+  }
+
   render() {
     const width = window.innerWidth;
     const data = this.context.data.product;
@@ -49,23 +53,27 @@ class Shop extends Component {
     );
     const continent = data.filter(
       object =>
-        object.continent === "Africa" && object.category !== "recommended"
+        object.continent === "africa" && object.category !== "recommended"
     );
     const season = data.filter(
       object => object.season === "spring" && object.category !== "recommended"
     );
     return (
       <div className="shop mx-lg-4 mx-1">
-        <div className="row mx-auto justify-content-between align-items-center">
-          <h4 className="ml-3 my-3">Recommended for you:</h4>
-          {recommended.length > 4 ? (
-            <button
-              className="btn btn-outline-primary mr-3"
-              onClick={this.toggleCollapseOne}
-            >
-              {!this.state.openOne ? "See more" : "See less"}
-            </button>
-          ) : null}
+        <div className="row mx-auto justify-content-between align-items-top mt-2">
+          <div className="col px-0">
+            <h4 className="ml-3">Recommended for you:</h4>
+          </div>
+          <div className="col px-0 text-right">
+            {recommended.length > 4 ? (
+              <button
+                className="btn btn-outline-primary mr-3"
+                onClick={this.toggleCollapseOne}
+              >
+                {!this.state.openOne ? "See more" : "See less"}
+              </button>
+            ) : null}
+          </div>
         </div>
         <div>
           <div
@@ -91,11 +99,12 @@ class Shop extends Component {
                           <Link
                             to={`/product/${product.id}`}
                             className="product-link"
+                            onClick={() => window.scrollTo(0, 0)}
                           >
                             {product.title}
                           </Link>
                         </h5>
-                        <h5 className="text-primary font-weight-bold">
+                        <h5 className="text-primary">
                           {this.context.data.store.currency + product.price}
                         </h5>
                       </span>
@@ -109,6 +118,7 @@ class Shop extends Component {
                         <Link
                           to={`/product/${product.id}`}
                           className="text-dark d-flex align-items-center explore-link"
+                          onClick={() => window.scrollTo(0, 0)}
                         >
                           <span className="pr-0 pl-0">Explore</span>
                           <FontAwesomeIcon
@@ -120,7 +130,7 @@ class Shop extends Component {
                       </div>
                       <div className="col-4 text-right text-nowrap">
                         <span className="text-dark pr-2">
-                          {!this.props.added ? (
+                          {!this.context.data.added ? (
                             <FontAwesomeIcon
                               icon={faShoppingCart}
                               className="cart-icon"
@@ -137,9 +147,9 @@ class Shop extends Component {
                         <span
                           to="/favorites"
                           className="text-dark pl-2"
-                          onClick={this.props.addToFavorites}
+                          onClick={this.addToFavorites}
                         >
-                          {!this.props.favorite ? (
+                          {!this.context.data.favorite ? (
                             <FontAwesomeIcon
                               icon={faHeart}
                               className="favorite-icon"
@@ -184,11 +194,12 @@ class Shop extends Component {
                           <Link
                             to={`/product/${product.id}`}
                             className="product-link"
+                            onClick={() => window.scrollTo(0, 0)}
                           >
                             {product.title}
                           </Link>
                         </h5>
-                        <h5 className="text-primary font-weight-bold">
+                        <h5 className="text-primary">
                           {this.context.data.store.currency + product.price}
                         </h5>
                       </span>
@@ -202,6 +213,7 @@ class Shop extends Component {
                         <Link
                           to={`/product/${product.id}`}
                           className="text-dark d-flex align-items-center explore-link"
+                          onClick={() => window.scrollTo(0, 0)}
                         >
                           <span className="pr-0 pl-0">Explore</span>
                           <FontAwesomeIcon
@@ -213,7 +225,7 @@ class Shop extends Component {
                       </div>
                       <div className="col-4 text-right text-nowrap">
                         <span className="text-dark pr-2">
-                          {!this.props.added ? (
+                          {!this.context.data.added ? (
                             <FontAwesomeIcon
                               icon={faShoppingCart}
                               className="cart-icon"
@@ -230,9 +242,9 @@ class Shop extends Component {
                         <span
                           to="/favorites"
                           className="text-dark pl-2"
-                          onClick={this.props.addToFavorites}
+                          onClick={this.addToFavorites}
                         >
-                          {!this.props.favorite ? (
+                          {!this.context.data.favorite ? (
                             <FontAwesomeIcon
                               icon={faHeart}
                               className="favorite-icon"
@@ -254,16 +266,20 @@ class Shop extends Component {
           </div>
         </Collapse>
 
-        <div className="row mx-auto justify-content-between align-items-center">
-          <h4 className="ml-3 my-3">Destination: Africa</h4>
-          {continent.length > 4 ? (
-            <button
-              className="btn btn-outline-primary mr-3"
-              onClick={this.toggleCollapseTwo}
-            >
-              {!this.state.openTwo ? "See more" : "See less"}
-            </button>
-          ) : null}
+        <div className="row mx-auto justify-content-between align-items-top mt-2">
+          <div className="col px-0">
+            <h4 className="ml-3">Destination: Africa</h4>
+          </div>
+          <div className="col px-0 text-right">
+            {continent.length > 4 ? (
+              <button
+                className="btn btn-outline-primary mr-3"
+                onClick={this.toggleCollapseTwo}
+              >
+                {!this.state.openTwo ? "See more" : "See less"}
+              </button>
+            ) : null}
+          </div>
         </div>
 
         <div>
@@ -290,11 +306,12 @@ class Shop extends Component {
                           <Link
                             to={`/product/${product.id}`}
                             className="product-link"
+                            onClick={() => window.scrollTo(0, 0)}
                           >
                             {product.title}
                           </Link>
                         </h5>
-                        <h5 className="text-primary font-weight-bold">
+                        <h5 className="text-primary">
                           {this.context.data.store.currency + product.price}
                         </h5>
                       </span>
@@ -308,6 +325,7 @@ class Shop extends Component {
                         <Link
                           to={`/product/${product.id}`}
                           className="text-dark d-flex align-items-center explore-link"
+                          onClick={() => window.scrollTo(0, 0)}
                         >
                           <span className="pr-0 pl-0">Explore</span>
                           <FontAwesomeIcon
@@ -319,7 +337,7 @@ class Shop extends Component {
                       </div>
                       <div className="col-4 text-right text-nowrap">
                         <span className="text-dark pr-2">
-                          {!this.props.added ? (
+                          {!this.context.data.added ? (
                             <FontAwesomeIcon
                               icon={faShoppingCart}
                               className="cart-icon"
@@ -336,9 +354,9 @@ class Shop extends Component {
                         <span
                           to="/favorites"
                           className="text-dark pl-2"
-                          onClick={this.props.addToFavorites}
+                          onClick={this.addToFavorites}
                         >
-                          {!this.props.favorite ? (
+                          {!this.context.data.favorite ? (
                             <FontAwesomeIcon
                               icon={faHeart}
                               className="favorite-icon"
@@ -383,11 +401,12 @@ class Shop extends Component {
                           <Link
                             to={`/product/${product.id}`}
                             className="product-link"
+                            onClick={() => window.scrollTo(0, 0)}
                           >
                             {product.title}
                           </Link>
                         </h5>
-                        <h5 className="text-primary font-weight-bold">
+                        <h5 className="text-primary">
                           {this.context.data.store.currency + product.price}
                         </h5>
                       </span>
@@ -401,6 +420,7 @@ class Shop extends Component {
                         <Link
                           to={`/product/${product.id}`}
                           className="text-dark d-flex align-items-center explore-link"
+                          onClick={() => window.scrollTo(0, 0)}
                         >
                           <span className="pr-0 pl-0">Explore</span>
                           <FontAwesomeIcon
@@ -412,7 +432,7 @@ class Shop extends Component {
                       </div>
                       <div className="col-4 text-right text-nowrap">
                         <span className="text-dark pr-2">
-                          {!this.props.added ? (
+                          {!this.context.data.added ? (
                             <FontAwesomeIcon
                               icon={faShoppingCart}
                               className="cart-icon"
@@ -429,9 +449,9 @@ class Shop extends Component {
                         <span
                           to="/favorites"
                           className="text-dark pl-2"
-                          onClick={this.props.addToFavorites}
+                          onClick={this.addToFavorites}
                         >
-                          {!this.props.favorite ? (
+                          {!this.context.data.favorite ? (
                             <FontAwesomeIcon
                               icon={faHeart}
                               className="favorite-icon"
@@ -452,18 +472,20 @@ class Shop extends Component {
               .slice(4, continent.indexOf(continent.length))}
           </div>
         </Collapse>
-        <div className="row mx-auto justify-content-between align-items-center">
-          <h4 className="ml-3 my-3">
-            Next season: <span>Spring</span>
-          </h4>
-          {season.length > 4 ? (
-            <button
-              className="btn btn-outline-primary mr-3"
-              onClick={this.toggleCollapseThree}
-            >
-              {!this.state.openThree ? "See more" : "See less"}
-            </button>
-          ) : null}
+        <div className="row mx-auto justify-content-between align-items-top mt-2">
+          <div className="col px-0">
+            <h4 className="ml-3">Next season: Spring</h4>
+          </div>
+          <div className="col px-0 text-right">
+            {season.length > 4 ? (
+              <button
+                className="btn btn-outline-primary mr-3"
+                onClick={this.toggleCollapseThree}
+              >
+                {!this.state.openThree ? "See more" : "See less"}
+              </button>
+            ) : null}
+          </div>
         </div>
 
         <div>
@@ -490,11 +512,12 @@ class Shop extends Component {
                           <Link
                             to={`/product/${product.id}`}
                             className="product-link"
+                            onClick={() => window.scrollTo(0, 0)}
                           >
                             {product.title}
                           </Link>
                         </h5>
-                        <h5 className="text-primary font-weight-bold">
+                        <h5 className="text-primary">
                           {this.context.data.store.currency + product.price}
                         </h5>
                       </span>
@@ -508,6 +531,7 @@ class Shop extends Component {
                         <Link
                           to={`/product/${product.id}`}
                           className="text-dark d-flex align-items-center explore-link"
+                          onClick={() => window.scrollTo(0, 0)}
                         >
                           <span className="pr-0 pl-0">Explore</span>
                           <FontAwesomeIcon
@@ -519,7 +543,7 @@ class Shop extends Component {
                       </div>
                       <div className="col-4 text-right text-nowrap">
                         <span className="text-dark pr-2">
-                          {!this.props.added ? (
+                          {!this.context.data.added ? (
                             <FontAwesomeIcon
                               icon={faShoppingCart}
                               className="cart-icon"
@@ -536,9 +560,9 @@ class Shop extends Component {
                         <span
                           to="/favorites"
                           className="text-dark pl-2"
-                          onClick={this.props.addToFavorites}
+                          onClick={this.addToFavorites}
                         >
-                          {!this.props.favorite ? (
+                          {!this.context.data.favorite ? (
                             <FontAwesomeIcon
                               icon={faHeart}
                               className="favorite-icon"
@@ -583,11 +607,12 @@ class Shop extends Component {
                           <Link
                             to={`/product/${product.id}`}
                             className="product-link"
+                            onClick={() => window.scrollTo(0, 0)}
                           >
                             {product.title}
                           </Link>
                         </h5>
-                        <h5 className="text-primary font-weight-bold">
+                        <h5 className="text-primary">
                           {this.context.data.store.currency + product.price}
                         </h5>
                       </span>
@@ -601,6 +626,7 @@ class Shop extends Component {
                         <Link
                           to={`/product/${product.id}`}
                           className="text-dark d-flex align-items-center explore-link"
+                          onClick={() => window.scrollTo(0, 0)}
                         >
                           <span className="pr-0 pl-0">Explore</span>
                           <FontAwesomeIcon
@@ -612,7 +638,7 @@ class Shop extends Component {
                       </div>
                       <div className="col-4 text-right text-nowrap">
                         <span className="text-dark pr-2">
-                          {!this.props.added ? (
+                          {!this.context.data.added ? (
                             <FontAwesomeIcon
                               icon={faShoppingCart}
                               className="cart-icon"
@@ -629,9 +655,9 @@ class Shop extends Component {
                         <span
                           to="/favorites"
                           className="text-dark pl-2"
-                          onClick={this.props.addToFavorites}
+                          onClick={this.addToFavorites}
                         >
-                          {!this.props.favorite ? (
+                          {!this.context.data.favorite ? (
                             <FontAwesomeIcon
                               icon={faHeart}
                               className="favorite-icon"

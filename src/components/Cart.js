@@ -78,7 +78,8 @@ class Cart extends Component {
   }
 
   render() {
-    var product = this.context.data.product;
+    const width = window.innerWidth;
+    const product = this.context.data.product;
     return (
       <div className="cart">
         <nav className="navbar navbar-light bg-white mt-0">
@@ -89,7 +90,13 @@ class Cart extends Component {
             </Link>
           </span>
           <div>
-            <ul className="navbar-nav mr-auto flex-row">
+            <ul
+              className={
+                width >= 768
+                  ? "navbar-nav mr-auto flex-row"
+                  : "navbar-nav mr-auto flex-row d-none"
+              }
+            >
               <li className="nav-item active">
                 <span className="navbar-text pl-2 pr-2">Cart</span>
               </li>
@@ -101,13 +108,19 @@ class Cart extends Component {
               </li>
             </ul>
           </div>
-          <span className="navbar-text">
+          <span className={width >= 768 ? "navbar-text" : "d-none"}>
             <Link to="/login" className="nav-link">
               <span>Login</span>
             </Link>
           </span>
         </nav>
-        <div className="bg-white box-shadow box mx-auto my-5 p-5 checkout-form">
+        <div
+          className={
+            width >= 768
+              ? "bg-white box-shadow box mx-auto p-4 my-5 checkout-form"
+              : "bg-white box-shadow box mx-auto px-3 py-4 checkout-form"
+          }
+        >
           {this.state.status === "" ? (
             <div className="empty-cart">
               <div className="row mx-3 mb-3 border-bottom">
@@ -141,11 +154,15 @@ class Cart extends Component {
                         <div className="card-body">
                           <span className="row mx-auto justify-content-between">
                             <h5 className="card-title">
-                              <Link to="/product" className="product-link">
+                              <Link
+                                to={`/product/${product.id}`}
+                                className="product-link"
+                                onClick={() => window.scrollTo(0, 0)}
+                              >
                                 {product.title}
                               </Link>
                             </h5>
-                            <h6 className="text-primary font-weight-bold">
+                            <h6 className="text-primary">
                               {this.context.data.store.currency + product.price}
                             </h6>
                           </span>
@@ -391,14 +408,20 @@ class Cart extends Component {
               <div className="row mx-3 mb-3 justify-content-center">
                 <h4>Shopping Cart</h4>
               </div>
-              <div className="row mx-3 mb-3 justify-content-center">
+              {/* <div className="row mx-3 mb-3 justify-content-center">
                 <h6>
                   You have {this.context.data.cartItems.length} items in the
                   backpack.
                 </h6>
-              </div>
+              </div> */}
               <div className="row mx-auto">
-                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 px-5 mb-5">
+                <div
+                  className={
+                    width >= 768
+                      ? "col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 px-5 mb-5"
+                      : "col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 px-3 mb-3"
+                  }
+                >
                   <div className="card mx-auto">
                     <img
                       className="card-img-top card-in-cart"
@@ -410,7 +433,7 @@ class Cart extends Component {
                         <h5 className="card-title">
                           {this.context.data.product[0].title}
                         </h5>
-                        <h6 className="text-primary font-weight-bold">
+                        <h6 className="text-primary">
                           {this.context.data.store.currency +
                             this.context.data.product[0].price}
                         </h6>
@@ -421,7 +444,13 @@ class Cart extends Component {
                     </div>
                   </div>
                 </div>
-                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 px-5 mb-5">
+                <div
+                  className={
+                    width >= 768
+                      ? "col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 px-5 mb-5"
+                      : "col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 px-3 mb-5"
+                  }
+                >
                   <div className="row mx-auto">
                     <h6>
                       Product: <span>{this.context.data.product[0].name}</span>

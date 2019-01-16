@@ -80,16 +80,18 @@ class Login extends React.Component {
                       aria-describedby="basic-addon1"
                       value={this.props.password}
                       onChange={this.props.handleChange}
+                      style={{ height: "40px" }}
                     />
                     <div className="input-group-append">
-                      <Link
-                        to="/"
+                      <button
                         className="btn btn-outline-primary"
                         type="submit"
                         onClick={this.props.handleLoggedInUser}
                       >
-                        Log In
-                      </Link>
+                        <Link to="/" className="react-link">
+                          Log In
+                        </Link>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -166,17 +168,18 @@ class Login extends React.Component {
                       aria-describedby="basic-addon1"
                       value={this.props.password}
                       onChange={this.props.handleChange}
+                      style={{ height: "40px" }}
                     />
                     <div className="input-group-append">
-                      <Link
-                        to="/"
-                        type="submit"
+                      <button
                         className="btn btn-outline-primary"
-                        id="button-addon2"
+                        type="submit"
                         onClick={this.props.handleNewUser}
                       >
-                        Register
-                      </Link>
+                        <Link to="/" className="react-link">
+                          Register
+                        </Link>
+                      </button>
                     </div>
                   </div>
                 </div>

@@ -16,6 +16,7 @@ class Blog extends Component {
   }
   render() {
     let url = window.location.pathname;
+    const width = window.innerWidth;
     if (url === "/") {
       return (
         <div className="blog mx-lg-4 mx-1 px-3">
@@ -23,7 +24,7 @@ class Blog extends Component {
             .map((blog, id) => (
               <div key={id}>
                 <div className="row">
-                  <h4 className="col-12 my-3">{blog.title}</h4>
+                  <h4 className="col-12 my-2">{blog.title}</h4>
                 </div>
                 <div className="row blog-image-wrapper my-4">
                   <img
@@ -33,20 +34,39 @@ class Blog extends Component {
                   />
                 </div>
                 <div className="row">
-                  <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-4">
+                  <div
+                    className={
+                      width >= 768
+                        ? "col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-4"
+                        : "col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12"
+                    }
+                  >
                     <p>{blog.paragraph_one}</p>
                   </div>
-                  <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 px-4 my-4">
+                  <div
+                    className={
+                      width >= 768
+                        ? "col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 px-4 my-4"
+                        : "col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12"
+                    }
+                  >
                     <p>{blog.paragraph_two}</p>
                   </div>
-                  <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-4">
+                  <div
+                    className={
+                      width >= 768
+                        ? "col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-4"
+                        : "col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12"
+                    }
+                  >
                     <div className="row mx-0">
                       <p>{blog.paragraph_three}</p>
                     </div>
                     <div className="row mx-0">
                       <Link
-                        to="/post"
+                        to="/blog"
                         className="text-dark d-flex align-items-center"
+                        onClick={() => window.scrollTo(0, 0)}
                       >
                         <span>Read more</span>
                         <FontAwesomeIcon
@@ -79,19 +99,37 @@ class Blog extends Component {
                 />
               </div>
               <div className="row">
-                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-4">
+                <div
+                  className={
+                    width >= 768
+                      ? "col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-4"
+                      : "col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mt-3"
+                  }
+                >
                   <p>{blog.paragraph_one}</p>
                 </div>
-                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 px-4 my-4">
+                <div
+                  className={
+                    width >= 768
+                      ? "col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 px-4 my-4"
+                      : "col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12"
+                  }
+                >
                   <p>{blog.paragraph_two}</p>
                 </div>
-                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-4">
+                <div
+                  className={
+                    width >= 768
+                      ? "col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-4"
+                      : "col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-3"
+                  }
+                >
                   <div className="row mx-0">
                     <p>{blog.paragraph_three}</p>
                   </div>
                   <div className="row mx-0">
                     <Link
-                      to="/post"
+                      to="/blog"
                       className="text-dark d-flex align-items-center"
                     >
                       <span>Read more</span>

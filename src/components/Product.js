@@ -30,11 +30,12 @@ class Product extends Component {
 
   render() {
     const url = window.location.pathname.split("/").slice(-1)[0];
+    const width = window.innerWidth;
     return (
       <div className="product mx-lg-4 mx-1">
         {
           this.context.data.product.map((product, id) => (
-            <div className="row mx-auto mb-5 h-100" key={id}>
+            <div className="row mx-auto mb-5 mt-3 h-100" key={id}>
               <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div className="row">
                   <div className="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
@@ -79,7 +80,10 @@ class Product extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+              <div
+                className="col-xl-6 col-lg-6 col-md-6 col-sm-11 col-11 mx-auto"
+                style={width <= 768 ? { marginTop: "-3rem" } : null}
+              >
                 <div className="row">
                   <h2>{product.title}</h2>
                 </div>

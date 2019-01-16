@@ -1,8 +1,8 @@
 {
-  "name": "traveltheme",
+  "name": "travelthemenew",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://ituraj.github.io/traveltheme",
+  "homepage": "http://ituraj.github.io/travelthemenew",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
     "@fortawesome/free-brands-svg-icons": "^5.6.1",

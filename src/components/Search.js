@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import "../styles/App.scss";
 import Select from "react-select";
 import { Link } from "react-router-dom";
-
-import json from "./../assets/data.json";
+import { DataContext } from "../dataContext";
+import SeasonFilter from "./SeasonFilter";
+import LandscapeFilter from "./LandscapeFilter";
+import ContinentFilter from "./ContinentFilter";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,22 +15,78 @@ import {
 } from "@fortawesome/pro-light-svg-icons";
 
 class Search extends Component {
+  static contextType = DataContext;
+
   constructor(props) {
     super(props);
     this.state = {
-      store: json.store,
-      product: json.featured,
-      searching: false
+      selectedSeason: null,
+      selectedLandscape: null,
+      selectedContinent: null,
+      searching: false,
+      value: "",
+      searchString: "",
+      products: []
     };
     this.handleSearch = this.handleSearch.bind(this);
+    this.handleSeasonSearch = this.handleSeasonSearch.bind(this);
+    this.handleLandscapeSearch = this.handleLandscapeSearch.bind(this);
+    this.handleContinentSearch = this.handleContinentSearch.bind(this);
+    this.clearFilters = this.clearFilters.bind(this);
   }
 
-  handleSearch(e) {
-    console.log(e.target.value);
-    this.setState({ searching: true });
+  componentDidMount() {
+    this.setState({
+      products: this.context.data.product
+    });
+    this.refs.search.focus();
+  }
+
+  handleSearch() {
+    if (this.refs.search.value === "") {
+      this.setState({
+        searching: false,
+        searchString: ""
+      });
+    } else {
+      this.setState({
+        searching: true,
+        searchString: this.refs.search.value
+      });
+    }
+  }
+
+  handleSeasonSearch(selectedSeason) {
+    this.setState({ searching: true, selectedSeason });
+  }
+
+  handleLandscapeSearch(selectedLandscape) {
+    this.setState({ searching: true, selectedLandscape });
+  }
+
+  handleContinentSearch(selectedContinent) {
+    this.setState({ searching: true, selectedContinent });
+  }
+
+  clearFilters() {
+    this.setState({
+      selectedSeason: null,
+      selectedLandscape: null,
+      selectedContinent: null,
+      searching: false
+    });
   }
 
   render() {
+    let search = this.state.searchString.trim().toLowerCase();
+    let products = this.state.products;
+
+    if (search.length > 0) {
+      products = products.filter(function(product) {
+        return product.tags.toLowerCase().match(search);
+      });
+    }
+
     var seasonOptions = [
       { label: "Spring", value: "spring" },
       { label: "Summer", value: "summer" },
@@ -51,6 +109,10 @@ class Search extends Component {
       { label: "North America", value: "north-america" },
       { label: "South America", value: "south-america" }
     ];
+
+    const { selectedSeason } = this.state;
+    const { selectedLandscape } = this.state;
+    const { selectedContinent } = this.state;
 
     return (
       <div className="search mx-lg-5">
@@ -79,9 +141,11 @@ class Search extends Component {
                       borderRadius: "0.25rem",
                       fontSize: "0.875rem"
                     }}
-                    className="form-control search-name"
+                    className="form-control"
                     placeholder="Explore..."
                     onChange={this.handleSearch}
+                    value={this.state.searchString}
+                    ref="search"
                   />
                 </div>
                 <div
@@ -92,16 +156,19 @@ class Search extends Component {
                     id="promotionInput"
                     type="text"
                     style={{ fontSize: "0.875rem" }}
-                    className="form-control search-name"
+                    className="form-control"
                     placeholder="Explore..."
                     onChange={this.handleSearch}
+                    value={this.state.searchString}
+                    ref="search"
                   />
                 </div>
               </div>
               <div className="col-xl-3 col-lg-4 col-md-12 col-12 pr-0 pl-0 mb-3 mb-lg-0">
                 <Select
                   classname="row mx-0 px-0 w-100 rounded-0 search-filter"
-                  onChange={this.handleSearch}
+                  value={selectedSeason}
+                  onChange={this.handleSeasonSearch}
                   closeOnSelect={true}
                   clearable={false}
                   searchable={false}
@@ -125,7 +192,8 @@ class Search extends Component {
               <div className="col-xl-3 col-lg-4 col-md-12 col-12 pr-0 pl-0 mb-3 mb-lg-0">
                 <Select
                   classname="row mx-0 px-0 w-100 search-filter"
-                  onChange={this.handleSearch}
+                  value={selectedLandscape}
+                  onChange={this.handleLandscapeSearch}
                   closeOnSelect={true}
                   clearable={false}
                   searchable={false}
@@ -149,7 +217,8 @@ class Search extends Component {
               <div className="col-xl-3 col-lg-4 col-md-12 col-12 pr-0 pl-0 mb-3 mb-lg-0">
                 <Select
                   classname="row mx-0 px-0 w-100 search-filter"
-                  onChange={this.handleSearch}
+                  value={selectedContinent}
+                  onChange={this.handleContinentSearch}
                   closeOnSelect={true}
                   clearable={false}
                   searchable={false}
@@ -173,13 +242,44 @@ class Search extends Component {
             </div>
           </div>
         </div>
-        {this.state.searching === true ? (
-          <div className="search-results mx-md-4 mx-1">
-            <div className="row mx-auto scrolling-wrapper">
-              {this.state.product
-                .map((product, id) => (
+        <div className="search-results mx-md-4 mx-1">
+          {this.state.searching && this.state.searchString ? (
+            <div className="row mx-3 justify-content-between">
+              <div className="col text-primary text-left px-0">
+                {products.length === 1 ? (
+                  <p>{products.length} adventure</p>
+                ) : (
+                  <p>{products.length} adventures</p>
+                )}
+              </div>
+              <div className="col text-primary text-right px-0">
+                <span onClick={this.clearFilters}>
+                  <p>Clear filters</p>
+                </span>
+              </div>
+            </div>
+          ) : this.state.searching ? (
+            <div className="row mx-3 justify-content-between">
+              {/* <div className="col text-primary text-left px-0">
+                {selectedSeason.length === 1 ? (
+                  <p>{selectedSeason.length} adventure</p>
+                ) : (
+                  <p>{selectedSeason.length} adventures</p>
+                )}
+              </div> */}
+              <div className="col text-primary text-right px-0">
+                <span onClick={this.clearFilters}>
+                  <p>Clear filters</p>
+                </span>
+              </div>
+            </div>
+          ) : null}
+          <div className="row mx-auto scrolling-wrapper">
+            {this.state.searching && this.state.searchString !== "" ? (
+              <React.Fragment>
+                {products.map((product, id) => (
                   <div
-                    className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 my-4"
+                    className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 mb-3"
                     key={id}
                   >
                     <div className="card mx-auto h-100">
@@ -191,12 +291,16 @@ class Search extends Component {
                       <div className="card-body">
                         <span className="row mx-auto justify-content-between">
                           <h5 className="card-title">
-                            <Link to="/product" className="product-link">
+                            <Link
+                              to={`/product/${product.id}`}
+                              className="product-link"
+                              onClick={() => window.scrollTo(0, 0)}
+                            >
                               {product.title}
                             </Link>
                           </h5>
-                          <h5 className="text-primary font-weight-bold">
-                            {this.state.store.currency + product.price}
+                          <h5 className="text-primary">
+                            {this.context.data.store.currency + product.price}
                           </h5>
                         </span>
                         <h6 className="card-subtitle mb-2 text-muted">
@@ -207,8 +311,9 @@ class Search extends Component {
                       <div className="row d-flex justify-content-between align-items-center py-2 px-4">
                         <div className="col-8">
                           <Link
-                            to="/product"
+                            to={`/product/${product.id}`}
                             className="text-dark d-flex align-items-center explore-link"
+                            onClick={() => window.scrollTo(0, 0)}
                           >
                             <span className="pr-0 pl-0">Explore</span>
                             <FontAwesomeIcon
@@ -256,11 +361,24 @@ class Search extends Component {
                       </div>
                     </div>
                   </div>
-                ))
-                .slice(0, 4)}
-            </div>
+                ))}
+              </React.Fragment>
+            ) : null}
+            {this.state.searching && this.state.selectedSeason ? (
+              <SeasonFilter selectedSeason={this.state.selectedSeason} />
+            ) : null}
+            {this.state.searching && this.state.selectedLandscape ? (
+              <LandscapeFilter
+                selectedLandscape={this.state.selectedLandscape}
+              />
+            ) : null}
+            {this.state.searching && this.state.selectedContinent ? (
+              <ContinentFilter
+                selectedContinent={this.state.selectedContinent}
+              />
+            ) : null}
           </div>
-        ) : null}
+        </div>
       </div>
     );
   }

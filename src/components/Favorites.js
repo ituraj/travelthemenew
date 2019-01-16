@@ -16,6 +16,22 @@ class Favorites extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    // this.handleShoppingCart = this.handleShoppingCart.bind(this);
+    this.addToFavorites = this.addToFavorites.bind(this);
+  }
+
+  // handleShoppingCart() {
+  //   console.log("added to shopping cart");
+  //   this.context.setData({
+  //     added: true
+  //   });
+  // }
+
+  addToFavorites() {
+    console.log("added to favorites");
+    this.context.setData({
+      recommended: "recommended"
+    });
   }
 
   render() {
@@ -26,10 +42,11 @@ class Favorites extends Component {
     return (
       <div className="favorites mx-lg-4 mx-1">
         <div className="row mx-auto justify-content-between align-items-center">
-          <h4 className="ml-3 my-3">Recommended for you:</h4>
+          <h4 className="ml-3 my-2">Recommended for you:</h4>
           <Link
             to="/shop"
             className="btn btn-outline-primary d-none d-sm-block mr-3"
+            onClick={() => window.scrollTo(0, 0)}
           >
             See more
           </Link>
@@ -50,11 +67,15 @@ class Favorites extends Component {
                   <div className="card-body">
                     <span className="row mx-auto justify-content-between">
                       <h5 className="card-title">
-                        <Link to="/product" className="product-link">
+                        <Link
+                          to={`/product/${product.id}`}
+                          className="product-link"
+                          onClick={() => window.scrollTo(0, 0)}
+                        >
                           {product.title}
                         </Link>
                       </h5>
-                      <h5 className="text-primary font-weight-bold">
+                      <h5 className="text-primary">
                         {this.context.data.store.currency + product.price}
                       </h5>
                     </span>
@@ -68,6 +89,7 @@ class Favorites extends Component {
                       <Link
                         to={`/product/${product.id}`}
                         className="text-dark d-flex align-items-center explore-link"
+                        onClick={() => window.scrollTo(0, 0)}
                       >
                         <span className="pr-0 pl-0">Explore</span>
                         <FontAwesomeIcon
@@ -78,8 +100,11 @@ class Favorites extends Component {
                       </Link>
                     </div>
                     <div className="col-4 text-right text-nowrap">
-                      <span className="text-dark pr-2">
-                        {!this.props.added ? (
+                      <span
+                        className="text-dark pr-2"
+                        onClick={this.handleShoppingCart}
+                      >
+                        {!this.context.data.product.added ? (
                           <FontAwesomeIcon
                             icon={faShoppingCart}
                             className="cart-icon"
@@ -94,11 +119,10 @@ class Favorites extends Component {
                       </span>
 
                       <span
-                        to="/favorites"
                         className="text-dark pl-2"
-                        onClick={this.props.addToFavorites}
+                        onClick={this.addToFavorites}
                       >
-                        {!this.props.favorite ? (
+                        {!this.context.data.product.favorite ? (
                           <FontAwesomeIcon
                             icon={faHeart}
                             className="favorite-icon"

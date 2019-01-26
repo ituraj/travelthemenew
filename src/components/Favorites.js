@@ -13,27 +13,6 @@ import {
 class Favorites extends Component {
   static contextType = DataContext;
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-    // this.handleShoppingCart = this.handleShoppingCart.bind(this);
-    this.addToFavorites = this.addToFavorites.bind(this);
-  }
-
-  // handleShoppingCart() {
-  //   console.log("added to shopping cart");
-  //   this.context.setData({
-  //     added: true
-  //   });
-  // }
-
-  addToFavorites() {
-    console.log("added to favorites");
-    this.context.setData({
-      recommended: "recommended"
-    });
-  }
-
   render() {
     const data = this.context.data.product;
     const recommended = data.filter(
@@ -100,10 +79,7 @@ class Favorites extends Component {
                       </Link>
                     </div>
                     <div className="col-4 text-right text-nowrap">
-                      <span
-                        className="text-dark pr-2"
-                        onClick={this.handleShoppingCart}
-                      >
+                      <span className="text-dark pr-2">
                         {!this.context.data.product.added ? (
                           <FontAwesomeIcon
                             icon={faShoppingCart}
@@ -118,10 +94,7 @@ class Favorites extends Component {
                         )}
                       </span>
 
-                      <span
-                        className="text-dark pl-2"
-                        onClick={this.addToFavorites}
-                      >
+                      <span className="text-dark pl-2">
                         {!this.context.data.product.favorite ? (
                           <FontAwesomeIcon
                             icon={faHeart}

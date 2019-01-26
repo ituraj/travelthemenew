@@ -9,10 +9,6 @@ import { faChevronRight } from "@fortawesome/pro-light-svg-icons";
 
 class Favorites extends Component {
   static contextType = DataContext;
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
 
   render() {
     return (

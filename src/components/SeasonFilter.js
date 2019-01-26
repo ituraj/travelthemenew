@@ -14,11 +14,6 @@ import {
 class SeasonFilter extends Component {
   static contextType = DataContext;
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
     const data = this.context.data.product;
     const springFilter = data.filter(object => object.season === "spring");
@@ -87,7 +82,7 @@ class SeasonFilter extends Component {
                 </div>
                 <div className="col-4 text-right text-nowrap">
                   <span className="text-dark pr-2">
-                    {!this.props.added ? (
+                    {!this.context.data.added ? (
                       <FontAwesomeIcon
                         icon={faShoppingCart}
                         className="cart-icon"
@@ -101,11 +96,7 @@ class SeasonFilter extends Component {
                     )}
                   </span>
 
-                  <span
-                    to="/favorites"
-                    className="text-dark pl-2"
-                    onClick={this.props.addToFavorites}
-                  >
+                  <span to="/favorites" className="text-dark pl-2">
                     {!this.props.favorite ? (
                       <FontAwesomeIcon
                         icon={faHeart}

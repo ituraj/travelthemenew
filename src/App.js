@@ -2,12 +2,7 @@ import React, { Component } from "react";
 import "./styles/App.scss";
 import json from "./assets/data.json";
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Search from "./components/Search";
@@ -39,8 +34,6 @@ class App extends Component {
           }));
         }
       },
-      added: false,
-      favorite: false,
       fetching: false,
       type: "input",
       name: "",
@@ -95,6 +88,7 @@ class App extends Component {
   }
 
   handleLoggedInUser() {
+    this.router.history.push(`/`);
     this.setState({
       user: "loggedin",
       loggedIn: true
@@ -113,9 +107,8 @@ class App extends Component {
     } else {
       return (
         <DataContext.Provider value={this.state.dataContext}>
-          <Router>
+          <Router basename="/travelthemenew">
             <Switch>
-              <Redirect from="/travelthemenew" to="/" />
               <Route
                 exact
                 path="/login"

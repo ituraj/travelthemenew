@@ -16,11 +16,6 @@ class Login extends React.Component {
     router: PropTypes.object
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
     return (
       <div className="login">

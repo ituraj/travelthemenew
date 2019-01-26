@@ -14,11 +14,6 @@ import {
 class LandscapeFilter extends Component {
   static contextType = DataContext;
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
     const data = this.context.data.product;
     const cityFilter = data.filter(object => object.landscape === "city");
@@ -89,7 +84,7 @@ class LandscapeFilter extends Component {
                 </div>
                 <div className="col-4 text-right text-nowrap">
                   <span className="text-dark pr-2">
-                    {!this.props.added ? (
+                    {!this.context.data.added ? (
                       <FontAwesomeIcon
                         icon={faShoppingCart}
                         className="cart-icon"
@@ -103,11 +98,7 @@ class LandscapeFilter extends Component {
                     )}
                   </span>
 
-                  <span
-                    to="/favorites"
-                    className="text-dark pl-2"
-                    onClick={this.props.addToFavorites}
-                  >
+                  <span to="/favorites" className="text-dark pl-2">
                     {!this.props.favorite ? (
                       <FontAwesomeIcon
                         icon={faHeart}

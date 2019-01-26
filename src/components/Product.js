@@ -93,6 +93,20 @@ class Product extends Component {
                 <div className="row py-2">
                   <h6>{product.town}</h6>
                 </div>
+                {/* <div className="row py-2" style={{ width: "100%" }}>
+                  <iframe
+                    title="nyc"
+                    width="100%"
+                    height="250"
+                    src="https://maps.google.com/maps?width=100%&amp;height=250&amp;hl=en&amp;q=New%20York%20City+(Map)&amp;ie=UTF8&amp;t=&amp;z=11&amp;iwloc=B&amp;output=embed"
+                    frameborder="0"
+                    scrolling="no"
+                    marginheight="0"
+                    marginwidth="0"
+                  >
+                    <a href="https://www.maps.ie/map-my-route/">Map a route</a>
+                  </iframe>
+                </div> */}
                 <div className="row py-2">
                   <p>{product.description}</p>
                 </div>

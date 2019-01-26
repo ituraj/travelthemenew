@@ -325,7 +325,7 @@ class Search extends Component {
                         </div>
                         <div className="col-4 text-right text-nowrap">
                           <span className="text-dark pr-2">
-                            {!this.props.added ? (
+                            {!this.context.data.added ? (
                               <FontAwesomeIcon
                                 icon={faShoppingCart}
                                 className="cart-icon"
@@ -339,11 +339,7 @@ class Search extends Component {
                             )}
                           </span>
 
-                          <span
-                            to="/favorites"
-                            className="text-dark pl-2"
-                            onClick={this.props.addToFavorites}
-                          >
+                          <span to="/favorites" className="text-dark pl-2">
                             {!this.props.favorite ? (
                               <FontAwesomeIcon
                                 icon={faHeart}

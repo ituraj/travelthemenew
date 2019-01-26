@@ -41,10 +41,6 @@ class Shop extends Component {
     this.setState({ openThree: !this.state.openThree });
   }
 
-  addToFavorites() {
-    console.log("this should add to favorites");
-  }
-
   render() {
     const width = window.innerWidth;
     const data = this.context.data.product;
@@ -78,7 +74,7 @@ class Shop extends Component {
         <div>
           <div
             className={
-              width < 1008 ? "row mx-auto scrolling-wrapper" : "row mx-auto"
+              width < 1200 ? "row mx-auto scrolling-wrapper" : "row mx-auto"
             }
           >
             {recommended
@@ -144,11 +140,7 @@ class Shop extends Component {
                           )}
                         </span>
 
-                        <span
-                          to="/favorites"
-                          className="text-dark pl-2"
-                          onClick={this.addToFavorites}
-                        >
+                        <span to="/favorites" className="text-dark pl-2">
                           {!this.context.data.favorite ? (
                             <FontAwesomeIcon
                               icon={faHeart}
@@ -173,7 +165,7 @@ class Shop extends Component {
         <Collapse isOpened={this.state.openOne}>
           <div
             className={
-              width < 1008 ? "row mx-auto scrolling-wrapper" : "row mx-auto"
+              width < 1200 ? "row mx-auto scrolling-wrapper" : "row mx-auto"
             }
           >
             {recommended
@@ -239,11 +231,7 @@ class Shop extends Component {
                           )}
                         </span>
 
-                        <span
-                          to="/favorites"
-                          className="text-dark pl-2"
-                          onClick={this.addToFavorites}
-                        >
+                        <span to="/favorites" className="text-dark pl-2">
                           {!this.context.data.favorite ? (
                             <FontAwesomeIcon
                               icon={faHeart}
@@ -285,7 +273,7 @@ class Shop extends Component {
         <div>
           <div
             className={
-              width < 1008 ? "row mx-auto scrolling-wrapper" : "row mx-auto"
+              width < 1200 ? "row mx-auto scrolling-wrapper" : "row mx-auto"
             }
           >
             {continent
@@ -351,11 +339,7 @@ class Shop extends Component {
                           )}
                         </span>
 
-                        <span
-                          to="/favorites"
-                          className="text-dark pl-2"
-                          onClick={this.addToFavorites}
-                        >
+                        <span to="/favorites" className="text-dark pl-2">
                           {!this.context.data.favorite ? (
                             <FontAwesomeIcon
                               icon={faHeart}
@@ -380,7 +364,7 @@ class Shop extends Component {
         <Collapse isOpened={this.state.openTwo}>
           <div
             className={
-              width < 1008 ? "row mx-auto scrolling-wrapper" : "row mx-auto"
+              width < 1200 ? "row mx-auto scrolling-wrapper" : "row mx-auto"
             }
           >
             {continent
@@ -446,11 +430,7 @@ class Shop extends Component {
                           )}
                         </span>
 
-                        <span
-                          to="/favorites"
-                          className="text-dark pl-2"
-                          onClick={this.addToFavorites}
-                        >
+                        <span to="/favorites" className="text-dark pl-2">
                           {!this.context.data.favorite ? (
                             <FontAwesomeIcon
                               icon={faHeart}
@@ -491,7 +471,7 @@ class Shop extends Component {
         <div>
           <div
             className={
-              width < 1008 ? "row mx-auto scrolling-wrapper" : "row mx-auto"
+              width < 1200 ? "row mx-auto scrolling-wrapper" : "row mx-auto"
             }
           >
             {season
@@ -557,11 +537,7 @@ class Shop extends Component {
                           )}
                         </span>
 
-                        <span
-                          to="/favorites"
-                          className="text-dark pl-2"
-                          onClick={this.addToFavorites}
-                        >
+                        <span to="/favorites" className="text-dark pl-2">
                           {!this.context.data.favorite ? (
                             <FontAwesomeIcon
                               icon={faHeart}
@@ -586,7 +562,7 @@ class Shop extends Component {
         <Collapse isOpened={this.state.openThree}>
           <div
             className={
-              width < 1008 ? "row mx-auto scrolling-wrapper" : "row mx-auto"
+              width < 1200 ? "row mx-auto scrolling-wrapper" : "row mx-auto"
             }
           >
             {season
@@ -652,11 +628,7 @@ class Shop extends Component {
                           )}
                         </span>
 
-                        <span
-                          to="/favorites"
-                          className="text-dark pl-2"
-                          onClick={this.addToFavorites}
-                        >
+                        <span to="/favorites" className="text-dark pl-2">
                           {!this.context.data.favorite ? (
                             <FontAwesomeIcon
                               icon={faHeart}

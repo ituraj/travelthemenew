@@ -10,10 +10,6 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 class Footer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
   render() {
     return (
       <footer className="footer">
@@ -53,18 +49,10 @@ class Footer extends Component {
             </a>
           </div>
           <div className="row mx-auto justify-content-center">
-            <h6>San Francisco | CA 94131 | US</h6>
+            <h6>Copenhagen | 1000 | Denmark</h6>
           </div>
           <div className="row justify-content-center py-1">
-            <h6 className="my-0">SITE BY JUMPSELLER</h6>
-          </div>
-          <div className="row justify-content-center py-1">
-            <h6 className="my-0">IZABELA TURAJ</h6>
-          </div>
-          <div className="row justify-content-center py-1">
-            <h6 className="my-0">
-              TERMS AND CONDITIONS | PRIVACY | LEGAL NOTICE
-            </h6>
+            <h6 className="my-0">ENJOY by Izabela Turaj</h6>
           </div>
         </div>
       </footer>

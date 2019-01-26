@@ -13,12 +13,23 @@ import {
 class Contact extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isEmpty: true
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e) {
-    alert("Thank you for contacting us. We will answer as soon as possible.");
+    if (
+      this.props.name.length > 0 ||
+      this.props.email.length > 0 ||
+      this.props.message.length > 0
+    ) {
+      this.setState({ isEmpty: false });
+      alert("Thank you for contacting us. We will answer as soon as possible.");
+    } else {
+      alert("All fields.");
+    }
     e.preventDefault();
   }
 

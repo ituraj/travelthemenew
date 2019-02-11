@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "6f43c1cc412ee0657f5f02316bd91425",
-    "url": "/travelthemenew/static/media/surfing-th.6f43c1cc.jpg"
+    "revision": "396f3552f180cded10b6d168dcdee156",
+    "url": "/travelthemenew/static/media/southafrica-th.396f3552.jpg"
   },
   {
-    "revision": "e26e5e772a0e595707ee",
+    "revision": "ff3842970f4f8ca4bd8e",
     "url": "/travelthemenew/static/css/main.b2ce59e8.chunk.css"
   },
   {
-    "revision": "cb0b0dceaa101694303d",
-    "url": "/travelthemenew/static/js/1.cb0b0dce.chunk.js"
+    "revision": "69b8be64a3a04e80b317",
+    "url": "/travelthemenew/static/js/1.69b8be64.chunk.js"
   },
   {
     "revision": "a81fcfa9a157b8e39a2a",
@@ -160,16 +160,16 @@ self.__precacheManifest = [
     "url": "/travelthemenew/static/media/skiing-th.9e9c8a68.jpg"
   },
   {
-    "revision": "396f3552f180cded10b6d168dcdee156",
-    "url": "/travelthemenew/static/media/southafrica-th.396f3552.jpg"
+    "revision": "ff3842970f4f8ca4bd8e",
+    "url": "/travelthemenew/static/js/main.ff384297.chunk.js"
   },
   {
     "revision": "d9f8ff99032522058fd78083e680b89b",
     "url": "/travelthemenew/static/media/spring1-th.d9f8ff99.jpg"
   },
   {
-    "revision": "e26e5e772a0e595707ee",
-    "url": "/travelthemenew/static/js/main.e26e5e77.chunk.js"
+    "revision": "6f43c1cc412ee0657f5f02316bd91425",
+    "url": "/travelthemenew/static/media/surfing-th.6f43c1cc.jpg"
   },
   {
     "revision": "b2c9d79afd8dd1740dd3e62ebc2b9521",
@@ -248,18 +248,6 @@ self.__precacheManifest = [
     "url": "/travelthemenew/static/media/egypt.76e89375.jpg"
   },
   {
-    "revision": "3300fec4589ff55e3eb07430fdbc12ec",
-    "url": "/travelthemenew/static/media/faroe.3300fec4.jpg"
-  },
-  {
-    "revision": "db9c17f89fcd12b0fe24e3c8c3010855",
-    "url": "/travelthemenew/static/media/festival.db9c17f8.jpg"
-  },
-  {
-    "revision": "022263b5376b989f3ac3fe67e95ff796",
-    "url": "/travelthemenew/static/media/greece.022263b5.jpg"
-  },
-  {
     "revision": "14d1aa5c758c063cedc87aea109bd76b",
     "url": "/travelthemenew/static/media/hd-image.14d1aa5c.jpg"
   },
@@ -282,10 +270,6 @@ self.__precacheManifest = [
   {
     "revision": "79fa4a2ebcf002ddb46f15876531f650",
     "url": "/travelthemenew/static/media/mountains.79fa4a2e.png"
-  },
-  {
-    "revision": "41291f14e651558152630d4f50ea4a18",
-    "url": "/travelthemenew/static/media/newzealand.41291f14.jpg"
   },
   {
     "revision": "1caa053c3090c265d7e52cee73123490",
@@ -332,7 +316,7 @@ self.__precacheManifest = [
     "url": "/travelthemenew/static/media/vietnam.1bc17393.jpg"
   },
   {
-    "revision": "7af33a5afa5e259bc2098c44b0093ff9",
+    "revision": "43fc13db4e1d6f7093f0057ba2275eec",
     "url": "/travelthemenew/index.html"
   }
 ];

@@ -58,9 +58,6 @@ p {
 }
 
 @media (max-width: 768px) {
-  .header-test {
-    height: 40vh;
-  }
 
   .login {
     overflow: hidden;
@@ -73,10 +70,6 @@ p {
     margin-top: 0 !important;
     padding-bottom: 0 !important;
   }
-}
-
-.blog-image-wrapper {
-  height: 40vh;
 }
 
 .blog-image {

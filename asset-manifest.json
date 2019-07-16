@@ -1,7 +1,7 @@
 {
-  "main.css": "/travelthemenew/static/css/main.b2ce59e8.chunk.css",
-  "main.js": "/travelthemenew/static/js/main.8cffd274.chunk.js",
-  "main.js.map": "/travelthemenew/static/js/main.8cffd274.chunk.js.map",
+  "main.css": "/travelthemenew/static/css/main.3a528a9d.chunk.css",
+  "main.js": "/travelthemenew/static/js/main.1f069b3a.chunk.js",
+  "main.js.map": "/travelthemenew/static/js/main.1f069b3a.chunk.js.map",
   "static/js/1.cfda58c3.chunk.js": "/travelthemenew/static/js/1.cfda58c3.chunk.js",
   "static/js/1.cfda58c3.chunk.js.map": "/travelthemenew/static/js/1.cfda58c3.chunk.js.map",
   "runtime~main.js": "/travelthemenew/static/js/runtime~main.a81fcfa9.js",
@@ -76,13 +76,13 @@
   "static/media/southafrica.jpg": "/travelthemenew/static/media/southafrica.4d643587.jpg",
   "static/media/spring1.jpg": "/travelthemenew/static/media/spring1.702fb5c6.jpg",
   "static/media/surfing.jpg": "/travelthemenew/static/media/surfing.89184ccc.jpg",
-  "static/media/surfing2.jpg": "/travelthemenew/static/media/surfing2.05e36da1.jpg",
+  "static/media/surfing2.jpg": "/travelthemenew/static/media/surfing2.9a552c67.jpg",
   "static/media/swimming.jpg": "/travelthemenew/static/media/swimming.7ff11530.jpg",
   "static/media/tanzania.jpg": "/travelthemenew/static/media/tanzania.052e1155.jpg",
   "static/media/turkey.jpg": "/travelthemenew/static/media/turkey.d0d84ae1.jpg",
   "static/media/vietnam.jpg": "/travelthemenew/static/media/vietnam.e07a7e86.jpg",
-  "static/css/main.b2ce59e8.chunk.css.map": "/travelthemenew/static/css/main.b2ce59e8.chunk.css.map",
+  "static/css/main.3a528a9d.chunk.css.map": "/travelthemenew/static/css/main.3a528a9d.chunk.css.map",
   "index.html": "/travelthemenew/index.html",
-  "precache-manifest.aacec9e032f3e22ccdc0c49177e4f2b2.js": "/travelthemenew/precache-manifest.aacec9e032f3e22ccdc0c49177e4f2b2.js",
+  "precache-manifest.7e24f2051de4d31509e89e0635641de1.js": "/travelthemenew/precache-manifest.7e24f2051de4d31509e89e0635641de1.js",
   "service-worker.js": "/travelthemenew/service-worker.js"
 }
